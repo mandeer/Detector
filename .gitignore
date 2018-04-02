@@ -1,0 +1,10 @@
+output/
+
+.idea/
+__pycache__/
+*.pyc
+
+# data or images
+[Dd]ata/
+images/
+models_pretrained/
