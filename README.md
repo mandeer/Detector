@@ -52,12 +52,12 @@
 
 ------
 ## 前排膜拜大牛
-* Ross Girshick(rbg): [个人主页](http://www.rossgirshick.info/), 主要贡献：
+* Ross Girshick(rbg): [个人主页](http://www.rossgirshick.info/), 主要成就：
     * DPM
     * R-CNN
     * Fast R-CNN
     * YOLO
-* Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要贡献：
+* Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要成就：
     * 2003年广东省理科高考状元
     * 图像去雾
     * ResNet
