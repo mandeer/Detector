@@ -56,6 +56,7 @@
     * DPM
     * R-CNN
     * Fast R-CNN
+    * YOLO
 * Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要贡献：
     * 2003年广东省理科高考状元
     * 图像去雾
