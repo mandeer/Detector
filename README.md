@@ -43,7 +43,7 @@
     * 参考论文1：A Discriminatively Trained, Multiscale, Deformable Part Model,
     Pedro等， 2008
     * 参考论文2：Object Detection with Discriminatively Trained Part Based Models,
-    Pedro & ross等， 2010
+    Pedro & ross等, 2010
     * 参考论文3：Deformable Part Models are Convolutoinal Neural Networks,
     ross等, 2015  
 本工程主要实现基于深度学习的检测算法，对传统算法感兴趣的同学可以阅读上面列出的论文，或相关博客。
@@ -51,8 +51,13 @@
 [返回顶部](#detector)
 
 ------
-## R-CNN
+## 前排膜拜大牛
+* Ross Girshick(rbg): [个人主页](#http://www.rossgirshick.info/)
+* Kaiming He(何恺明): [个人主页](#http://kaiminghe.com/)
 
+------
+## R-CNN
+[R-CNN](https://arxiv.org/abs/1311.2524)
 
 [返回顶部](#detector)
 
