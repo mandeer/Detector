@@ -52,8 +52,8 @@
 
 ------
 ## 前排膜拜大牛
-* Ross Girshick(rbg): [个人主页](#http://www.rossgirshick.info/)
-* Kaiming He(何恺明): [个人主页](#http://kaiminghe.com/)
+* Ross Girshick(rbg): [个人主页](http://www.rossgirshick.info/), 主要贡献：
+* Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要贡献：
 
 ------
 ## R-CNN
@@ -63,8 +63,6 @@
 
 ------
 ## SPPNet
-[SPPNet]()
-
 
 ------
 ## Fast R-CNN
