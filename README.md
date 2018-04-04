@@ -53,7 +53,22 @@
 ------
 ## 前排膜拜大牛
 * Ross Girshick(rbg): [个人主页](http://www.rossgirshick.info/), 主要贡献：
+    * DPM
+    * R-CNN
+    * Fast R-CNN
 * Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要贡献：
+    * 2003年广东省理科高考状元
+    * 图像去雾
+    * ResNet
+    * MSRA 初始化
+    * Group 正则化
+    * PReLU
+    * SPPNet
+    * Faster R-CNN
+    * Mask R-CNN
+    * 炉石传说
+
+[返回顶部](#detector)
 
 ------
 ## R-CNN
