@@ -4,7 +4,7 @@
 * [SPPNet](#sppnet)
 * [Fast R-CNN](#fast)
 * [**Faster R-CNN**](#faster)
-* [**Mask R-CNN**](mask)
+* [**Mask R-CNN**](#mask)
 * [YOLO](#yolo)
     * [**YOLO9000**](#yolo9000)
 * [**SSD**](#ssd)
@@ -93,21 +93,32 @@
 
 ------
 ## Faster
+[Faster R-CNN](https://arxiv.org/abs/1506.01497)
 
 ------
 ## Mask
 [Mask R-CNN](https://arxiv.org/abs/1703.06870)
 
+[返回顶部](#detector)
+
 ------
 ## YOLO
+[YOLO](https://arxiv.org/abs/1506.02640)
+
+[返回顶部](#detector)
 
 ------
 ## YOLO9000
+[YOLO9000](https://arxiv.org/abs/1612.08242)
+
+[返回顶部](#detector)
 
 ------
 
 ## SSD
+[SSD](https://arxiv.org/abs/1512.02325)
 
+[返回顶部](#detector)
 
   
   
