@@ -81,7 +81,8 @@
 
 ### Object detection system overview
 ![R-CNN](./imgs/R-CNN.png)
-* 候选区域选择：通过不同宽高的窗口滑动获得了潜在的2K个Region proposals.
+* 候选区域(Region proposals)：使用传统的区域提取方法，
+通过滑动不同宽高的窗口获得了2K个潜在的候选区域。
 * 使用CNN提取特征：将每个候选区域‘reSize’到固定大小，最终获得了4096维的特征。
 * 使用SVM进行分类：每类训练一个SVM进行分类。注，作者测试使用softmax时mAP下降了3.3。
 * 边框回归：提升了3-4mAP.
