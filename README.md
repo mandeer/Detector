@@ -77,7 +77,17 @@
 ------
 ## R-CNN
 [R-CNN](https://arxiv.org/abs/1311.2524)
+第一次将CNN应用到目标检测上，在目标检测领域取得了巨大突破。
 
+### Object detection system overview
+![R-CNN](./imgs/R-CNN.png)
+* 候选区域选择：通过不同宽高的窗口滑动获得了潜在的2K个Region proposals.
+* 使用CNN提取特征：将每个候选区域‘reSize’到固定大小，最终获得了4096维的特征。
+* 使用SVM进行分类：每类训练一个SVM进行分类。注，作者测试使用softmax时mAP下降了3.3。
+* 边框回归：提升了3-4mAP.
+
+### 主要创新点
+* 
 
 [返回顶部](#detector)
 
@@ -118,7 +128,6 @@
 [返回顶部](#detector)
 
 ------
-
 ## SSD
 [SSD](https://arxiv.org/abs/1512.02325)
 
