@@ -2,7 +2,7 @@
 使用PyTorch实现了经典的深度学习检测算法：
 * [RCNN](#r-cnn)(2013.11)
 * [SPPNet](#sppnet)
-* [Fast R-CNN](#fastr-cnn)
+* [Fast R-CNN](#fastrcnn)
 * [**Faster R-CNN**]()
 * [**Mask R-CNN**]()
 * YOLO
