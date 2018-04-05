@@ -44,7 +44,9 @@
     Pedro等， 2008
     * 参考论文2：Object Detection with Discriminatively Trained Part Based Models,
     Pedro & ross等, 2010
-    * 参考论文3：Deformable Part Models are Convolutoinal Neural Networks,
+    * 参考论文3：Visual Object Detection with Deformable Part Models, Pedro & ross等,
+    2013
+    * 参考论文4：Deformable Part Models are Convolutoinal Neural Networks,
     ross等, 2015  
 本工程主要实现基于深度学习的检测算法，对传统算法感兴趣的同学可以阅读上面列出的论文，或相关博客。
 
