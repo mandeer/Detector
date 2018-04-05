@@ -1,8 +1,8 @@
 # Detector
 使用PyTorch实现了经典的深度学习检测算法：
-* [RCNN](#r-cnn)
+* [RCNN](#r-cnn)(2013.11)
 * [SPPNet](#sppnet)
-* Fast R-CNN
+* [Fast R-CNN](#fast r-cnn)
 * [**Faster R-CNN**]()
 * [**Mask R-CNN**]()
 * YOLO
@@ -56,6 +56,7 @@
     * DPM
     * R-CNN
     * Fast R-CNN
+    * Faster R-CNN
     * YOLO
 * Kaiming He(何恺明): [个人主页](http://kaiminghe.com/), 主要成就：
     * 2003年广东省理科高考状元
@@ -75,13 +76,20 @@
 ## R-CNN
 [R-CNN](https://arxiv.org/abs/1311.2524)
 
+
 [返回顶部](#detector)
 
 ------
 ## SPPNet
+[SPPNet](https://arxiv.org/abs/1406.4729)
+
+[返回顶部](#detector)
 
 ------
 ## Fast R-CNN
+[Fast R-CNN](https://arxiv.org/abs/1504.08083)
+
+[返回顶部](#detector)
 
 ------
 ## Faster R-CNN
