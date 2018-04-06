@@ -1,6 +1,6 @@
 # Detector
 使用PyTorch实现了经典的深度学习检测算法：
-* [RCNN](#r-cnn)(2013.11)
+* [R-CNN](#r-cnn)(2013.11)
 * [SPP-net](#spp-net)(2014.6)
 * [Fast R-CNN](#fast)(2015.4)
 * [**Faster R-CNN**](#faster)(2015.6)
@@ -99,7 +99,9 @@
 利用空间金字塔池化，使得任意大小的特征图都能够转换成固定大小的特征向量。
 从而解决了CNN的输入必须是固定尺寸的问题，实现了多尺度输入。
 因此SPP-net只需对原图做一次卷积，节省了大量的计算时间，比[R-CNN](#r-cnn)有24～102倍的提速。  
-另外，
+另外，SPP对分类性能也有帮助，获得了2014年imageNet挑战的检测的第二名和分类的第三名。
+另外两个是VGG和GoogLeNet，
+相关内容请参考[Classifier](https://github.com/mandeer/Classifier)工程。
 
 ### SPPNet structure
 ![SPPNet](./imgs/SPPNet.png)
