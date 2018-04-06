@@ -123,6 +123,10 @@
 ## Fast
 [Fast R-CNN](https://arxiv.org/abs/1504.08083)
 
+
+### Fast R-CNN architecture
+![Fast_R-CNN](./imgs/Fast_R-CNN.png)
+
 [返回顶部](#detector)
 
 ------
