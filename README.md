@@ -105,14 +105,17 @@
 
 ### SPPNet structure
 ![SPP-net](./imgs/SPP-net.png)
-* 使用卷积网络提取特征：每幅图只做一次卷积。
+* 使用卷积网络提取特征：每幅图只做一次卷积，而不是每个候选区域做一次卷积运算。
 * 将候选区域映射到最后一层的feature map上，然后使用SPP得到固定长度的特征。
 * 使用SVM进行分类
 * 边框回归
 
 
 ### 主要创新点
-* 空间金字塔池化(spatial pyramid pooling, SPP)：
+* 空间金字塔池化(spatial pyramid pooling, SPP)：对每个bins使用全局最大值池化，
+得到的特征仅于bins和feature map的个数有关，与feature map的尺寸无关。
+从而解决了CNN的输入必须是固定尺寸的问题，实现了多尺度输入。
+* 多尺度输入的模型训练与测试方法：不同尺度输入的模型间参数共享。
 
 [返回顶部](#detector)
 
