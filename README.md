@@ -99,12 +99,17 @@
 利用空间金字塔池化，使得任意大小的特征图都能够转换成固定大小的特征向量。
 从而解决了CNN的输入必须是固定尺寸的问题，实现了多尺度输入。
 因此SPP-net只需对原图做一次卷积，节省了大量的计算时间，比[R-CNN](#r-cnn)有24～102倍的提速。  
-另外，SPP对分类性能也有帮助，获得了2014年imageNet挑战的检测的第二名和分类的第三名。
+另外，SPP对分类性能也有帮助，获得了2014年imageNet挑战中检测的第二名和分类的第三名。
 另外两个是VGG和GoogLeNet，
 相关内容请参考[Classifier](https://github.com/mandeer/Classifier)工程。
 
 ### SPPNet structure
-![SPPNet](./imgs/SPPNet.png)
+![SPP-net](./imgs/SPP-net.png)
+* 使用卷积网络提取特征：每幅图只做一次卷积。
+* 将候选区域映射到最后一层的feature map上，然后使用SPP得到固定长度的特征。
+* 使用SVM进行分类
+* 边框回归
+
 
 ### 主要创新点
 * 空间金字塔池化(spatial pyramid pooling, SPP)：
