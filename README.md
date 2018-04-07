@@ -132,7 +132,10 @@
 * 分类、边框回归
 
 ### 主要创新点
-* RoI pooling：
+* RoI pooling：仅有一层的[SPP](#spp-net)层，多尺度学习能提高一点点mAP，却成倍增加了计算量。
+* Fine-tuning方法--分层采样：解决了[R-CNN](#r-cnn)和[SPP-net](#spp-net)训练低效的问题。
+* Multi-task loss：Lcls & Lloc
+* Smooth_L1 Loss：比L1 loss更鲁棒，比L2 loss对离群点更不敏感。
 
 [返回顶部](#detector)
 
