@@ -122,7 +122,7 @@
 ------
 ## Fast
 [Fast R-CNN](https://arxiv.org/abs/1504.08083)
-把类别判断和边框回归统一到一个深度网络框架中，首次实现了end-to-end(proposal阶段除外)的训练。
+把类别判断和边框回归统一到了一个深度网络框架中，首次实现了end-to-end(proposal阶段除外)的训练。
 
 ### Fast R-CNN architecture
 ![Fast_R-CNN](./imgs/Fast_R-CNN.png)
@@ -130,6 +130,9 @@
 * 使用卷积网络提取特征
 * RoI Pooling：为每个候选区域提取固定长度的特征。
 * 分类、边框回归
+
+### 主要创新点
+* RoI pooling：
 
 [返回顶部](#detector)
 
