@@ -144,6 +144,9 @@
 ## Faster
 [Faster R-CNN](https://arxiv.org/abs/1506.01497)
 
+### Faster R-CNN architecture
+![Faster_R-CNN](./imgs/Faster_R-CNN.png)
+
 [返回顶部](#detector)
 
 ------
