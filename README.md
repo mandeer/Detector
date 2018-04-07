@@ -122,7 +122,10 @@
 ------
 ## Fast
 [Fast R-CNN](https://arxiv.org/abs/1504.08083)
-
+* 输入：正图及一系列候选区域
+* 使用卷积网络提取特征
+* RoI Pooling：为每个候选区域提取固定长度的特征。
+* 分类、边框回归
 
 ### Fast R-CNN architecture
 ![Fast_R-CNN](./imgs/Fast_R-CNN.png)
