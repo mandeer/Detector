@@ -85,7 +85,7 @@
 通过滑动不同宽高的窗口获得了2K个潜在的候选区域。
 * 使用CNN提取特征：将每个候选区域‘reSize’到固定大小，最终获得了4096维的特征。
 * 使用SVM进行分类：每类训练一个SVM进行分类。注，作者测试使用softmax时mAP下降了3.3。
-* 边框回归：提升了3-4mAP.
+* 位置精修(Bounding-box regression, 边框回归)：提升了3-4mAP.
 
 ### 主要创新点
 * 将CNN应用于目标检测
@@ -139,13 +139,24 @@
 
 [返回顶部](#detector)
 
-
 ------
 ## Faster
 [Faster R-CNN](https://arxiv.org/abs/1506.01497)
+提出了RPN(Region Proposal Network), 终于将目标检测的四个基本步骤,
+生成候选区域、特征提取、分类、边框回归统一到一个深度网络框架之中。
 
 ### Faster R-CNN architecture
 ![Faster_R-CNN](./imgs/Faster_R-CNN.png)
+
+### 主要创新点
+* Region Proposal Networks: 
+* 候选区域、锚点(Anchors): 多尺度锚点解决了待检测目标拥有不同尺度和宽高比例的问题。
+* RPN和Fast R-CNN共享特征的训练方法：
+    * 从预训练模型W0开始，训练RPN，得到W1
+    * 使用W1得到的候选区域及于训练模型W0，训练Fast R-CNN，得到W2
+    * 使用W2，训练RPN，但固定前面的共享层，仅微调RPN独有的网络层，得到W3
+    * 使用W3，训练Fast R-CNN，同样固定前面的共享层，仅训练Fast R-CNN独有的层，得到最终的W4
+    * 重复上述过程得到的改进不大。
 
 [返回顶部](#detector)
 
