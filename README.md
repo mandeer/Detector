@@ -153,7 +153,8 @@
 * 检测class得分比较高的候选区域
 
 ### 主要创新点
-* Region Proposal Networks: 
+* Region Proposal Networks: 因为与Fast R-CNN共享特征，所以RPN几乎不消耗计算资源。
+又因为RPN可以提高候选区域的质量，故提高了检出率。
 * 候选区域、锚点(Anchors): 多尺度锚点解决了待检测目标拥有不同尺度和宽高比例的问题。
 * RPN和Fast R-CNN共享特征的训练方法：
     * 从预训练模型W0开始，训练RPN，得到W1
