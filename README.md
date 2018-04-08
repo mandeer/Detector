@@ -147,6 +147,10 @@
 
 ### Faster R-CNN architecture
 ![Faster_R-CNN](./imgs/Faster_R-CNN.png)
+* 输入：整图
+* 通过RPN网络得到proposal boxes
+* 使用NMS(非最大值抑制)降低冗余
+* 检测class得分比较高的候选区域
 
 ### 主要创新点
 * Region Proposal Networks: 
