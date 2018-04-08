@@ -5,7 +5,7 @@
 * [Fast R-CNN](#fast)(2015.4)
 * [**Faster R-CNN**](#faster)(2015.6)
 * [**Mask R-CNN**](#mask)(2017.3)
-* [Mask^X R-CNN](#mask^x)(2017.11)
+* [Mask^X R-CNN](#maskx)(2017.11)
 * [YOLO](#yolo)(2015.6)
     * [**YOLO9000**](#yolo9000)(2016.12)
 * [**SSD**](#ssd)(2015.12)
@@ -179,7 +179,7 @@
 [返回顶部](#detector)
 
 ------
-## Mask^X
+## MaskX
 [Learning to Segment Every Thing](https://arxiv.org/abs/1711.10370)
 
 [返回顶部](#detector)
