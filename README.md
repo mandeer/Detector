@@ -169,6 +169,12 @@
 ## Mask
 [Mask R-CNN](https://arxiv.org/abs/1703.06870)
 
+### 什么是实例分割
+![Instance_segmentation](./imgs/Instance_segmentation.png)
+
+### Mask R-CNN 框架
+![Mask_R-CNN](./imgs/Mask_R-CNN.png)
+
 [返回顶部](#detector)
 
 ------
