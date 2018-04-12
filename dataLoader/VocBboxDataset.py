@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import numpy as np
 from PIL import Image
@@ -39,6 +41,8 @@ class VocBboxDataset:
         # Load a image
         img_file = os.path.join(self.data_dir, 'JPEGImages', id_ + '.jpg')
         img = Image.open(img_file).convert('RGB')
+        W, H = img.size
+        bbox /= [W, H, W, H]
 
         return img, bbox, label
 
@@ -66,4 +70,5 @@ VOC_BBOX_LABEL_NAMES = (
     'sheep',
     'sofa',
     'train',
-    'tvmonitor')
+    'tvmonitor'
+)

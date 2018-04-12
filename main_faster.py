@@ -4,7 +4,7 @@ import os
 import random
 import torch
 from torch.autograd import Variable
-from dataLoader import getDataLoader
+from dataLoader import getVocDataLoader
 import models
 
 
@@ -32,14 +32,14 @@ def main(config):
         os.makedirs(config.out_path)
 
     # data
-    if config.dataset == 'Coco':
-        config.data_path = './data/coco'
+    if config.dataset == 'COCO':
+        config.data_path = './dataset/coco'
         config.num_classes = 80
-        trainLoader, testLoader = getDataLoader(config)
-        print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
-    elif config.dataset == 'VOC':
-        config.data_path = './data/voc07'
+    elif config.dataset == 'VOC07':
+        config.data_path = './dataset/voc07/VOCdevkit/VOC2007'
         config.num_classes = 20
+        trainLoader, valLoader = getVocDataLoader(config)
+        print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
     else:
         print('Only support Coco and VOC!!')
         return
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     parser.add_argument('--log-step',   type=int,      default=100)
     parser.add_argument('--use-cuda',   type=bool,     default=True,        help='enables cuda')
 
-    parser.add_argument('--dataset',    type=str,      default='Coco',      help='Coco or VOC')
+    parser.add_argument('--dataset',    type=str,      default='VOC07',      help='COCO or VOC07, VOC12')
     parser.add_argument('--mode',       type=str,      default='train',     help='train, test')
     parser.add_argument('--model',      type=str,      default='VGG',     help='model')
     parser.add_argument('--pretrained', type=str,      default='',          help='model for test or retrain')
