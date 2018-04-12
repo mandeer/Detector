@@ -39,7 +39,7 @@ def main(config):
         config.data_path = './dataset/voc07/VOCdevkit/VOC2007'
         config.num_classes = 20
         trainLoader, valLoader = getVocDataLoader(config)
-        print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
+        print('train samples num: ', len(trainLoader), '  test samples num: ', len(valLoader))
     else:
         print('Only support Coco and VOC!!')
         return
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--image-size', type=int,      default=32)
     parser.add_argument('--n-epochs',   type=int,      default=50)
-    parser.add_argument('--batch-size', type=int,      default=128)
+    parser.add_argument('--batch-size', type=int,      default=1)
     parser.add_argument('--n-workers',  type=int,      default=4)
     parser.add_argument('--lr',         type=float,    default=0.1)
     parser.add_argument('--out-path',   type=str,      default='./output')

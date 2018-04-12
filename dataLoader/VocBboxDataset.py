@@ -4,10 +4,12 @@ import os
 import numpy as np
 from PIL import Image
 import xml.etree.ElementTree as ET
+from torch.utils import data
+from torchvision import transforms as Trans
 
 
-class VocBboxDataset:
-    def __init__(self, data_dir, split='trainval'):
+class VocBboxDataset(data.Dataset):
+    def __init__(self, data_dir, split='trainval', transforms=None, resizeImage=True):
 
         if split not in ['train', 'trainval', 'val']:
             if not (split == 'test' and data_dir == 'VOC2007'):
@@ -22,6 +24,16 @@ class VocBboxDataset:
         self.ids = [id_.strip() for id_ in open(id_list_file)]
         self.data_dir = data_dir
         self.label_names = VOC_BBOX_LABEL_NAMES
+        self.resizeImage = resizeImage
+        if transforms is None:
+            normalize = Trans.Normalize(mean=[0.5, 0.5, 0.5],
+                                        std=[0.5, 0.5, 0.5])
+            self.transform = transforms.Compose([
+                transforms.ToTensor(),  # This makes it into [0,1]
+                transforms.normalize
+            ])
+        else:
+            self.transform = transforms
 
     def __getitem__(self, index):
         id_ = self.ids[index]
@@ -43,11 +55,23 @@ class VocBboxDataset:
         img = Image.open(img_file).convert('RGB')
         W, H = img.size
         bbox /= [W, H, W, H]
+        if self.resizeImage:
+            img = preprocess(img)
+        img = self.transform(img)
 
         return img, bbox, label
 
     def __len__(self):
         return len(self.ids)
+
+
+def preprocess(img, min_size=600, max_size=1000):
+    W, H = img.size
+    scale1 = min_size / min(H, W)
+    scale2 = max_size / max(H, W)
+    scale = min(scale1, scale2)
+    img = img.resize((int(W * scale), int(H * scale)), Image.ANTIALIAS)
+    return img
 
 
 VOC_BBOX_LABEL_NAMES = (
