@@ -35,14 +35,15 @@ def main(config):
     if config.dataset == 'Coco':
         config.data_path = './data/coco'
         config.num_classes = 80
+        trainLoader, testLoader = getDataLoader(config)
+        print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
     elif config.dataset == 'VOC':
-        config.data_path = './data/VOC07'
+        config.data_path = './data/voc07'
         config.num_classes = 20
     else:
         print('Only support Coco and VOC!!')
         return
-    trainLoader, testLoader = getDataLoader(config)
-    print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
+
 
 
 if __name__ == '__main__':
