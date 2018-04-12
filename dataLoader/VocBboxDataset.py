@@ -12,7 +12,7 @@ class VocBboxDataset(data.Dataset):
     def __init__(self, data_dir, split='trainval', transforms=None, resizeImage=True):
 
         if split not in ['train', 'trainval', 'val']:
-            if not (split == 'test' and data_dir == 'VOC2007'):
+            if not (split == 'test' and data_dir.split('/')[-1] == 'VOC2007'):
                 print(
                     'please pick split from \'train\', \'trainval\', \'val\''
                     'for 2012 dataset. For 2007 dataset, you can pick \'test\''
