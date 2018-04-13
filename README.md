@@ -178,9 +178,10 @@ Faster R-CNN的代码主要参考了
 ------
 ## Mask
 [Mask R-CNN](https://arxiv.org/abs/1703.06870)
-在[Faster R-CNN](#fast)基础上添加一个用于预测目标掩模（object mask）的新分支，
-在COCO的一系列挑战任务(instance segmentation, object detection & person keypoint detection)
-中都取得了领先的结果。
+通过在[Faster R-CNN](#faster)基础上添加了一个用于预测目标掩模(object mask)的新分支，
+在没有增加太多计算量的前提下，在COCO的一系列挑战任务
+(instance segmentation, object detection & person keypoint detection)中
+**都**取得了领先的结果。
 
 ### 什么是实例分割
 ![Instance_segmentation](./imgs/Instance_segmentation.png)
