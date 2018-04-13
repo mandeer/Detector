@@ -176,6 +176,8 @@ Faster R-CNN的代码主要参考了
 ### FPN architecture
 ![FPN](./imgs/FPN.png)
 
+### 主要创新点
+
 [返回顶部](#detector)
 
 ------
@@ -211,6 +213,11 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## MaskX
 [Learning to Segment Every Thing](https://arxiv.org/abs/1711.10370)
+
+### Mask^X R-CNN method
+![MaskX](./imgs/MaskX.png)
+
+### 主要创新点
 
 [返回顶部](#detector)
 
