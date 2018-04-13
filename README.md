@@ -4,8 +4,7 @@
 * [SPP-net](#spp-net)(2014.6)
 * [Fast R-CNN](#fast)(2015.4)
 * [**Faster R-CNN**](#faster)(2015.6)
-* [FCN](#fcn)(2014.11)
-* [R-FCN](#r-fcn)(2016.5)
+* [FPN](#fpn)(2016.12)
 * [**Mask R-CNN**](#mask)(2017.3)
 * [Mask^X R-CNN](#maskx)(2017.11)
 * [YOLO](#yolo)(2015.6)
@@ -171,26 +170,29 @@ Faster R-CNN的代码主要参考了
 [返回顶部](#detector)
 
 ------
-## FCN
-[FCN](https://arxiv.org/abs/1605.06211)
-
-[返回顶部](#detector)
-
-------
-## R-FCN
-[R-FCN](https://arxiv.org/abs/1605.06409)
+## FPN
+[FPN](https://arxiv.org/abs/1612.03144)
 
 [返回顶部](#detector)
 
 ------
 ## Mask
 [Mask R-CNN](https://arxiv.org/abs/1703.06870)
+在[Faster R-CNN](#fast)基础上添加一个用于预测目标掩模（object mask）的新分支，
+在COCO的一系列挑战任务(instance segmentation, object detection & person keypoint detection)
+中都取得了领先的结果。
 
 ### 什么是实例分割
 ![Instance_segmentation](./imgs/Instance_segmentation.png)
 
 ### Mask R-CNN 框架
 ![Mask_R-CNN](./imgs/Mask_R-CNN.png)
+
+### ROIAlign
+![ROIAlign](./imgs/ROIAlign.png)
+
+### 主要创新点
+* ROIAlign:
 
 [返回顶部](#detector)
 
