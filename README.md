@@ -178,8 +178,8 @@ Faster R-CNN的代码主要参考了
 ------
 ## Mask
 [Mask R-CNN](https://arxiv.org/abs/1703.06870)
-通过在[Faster R-CNN](#faster)基础上添加了一个用于预测目标掩模(object mask)的新分支，
-在没有增加太多计算量的前提下，在COCO的一系列挑战任务
+通过在[Faster R-CNN](#faster)基础上添加了一个用于预测目标掩模的新分支(mask branch)，
+在没有增加太多计算量，且没有使用各种trick的前提下，在COCO的一系列挑战任务
 (instance segmentation, object detection & person keypoint detection)中
 **都**取得了领先的结果。
 
@@ -188,12 +188,19 @@ Faster R-CNN的代码主要参考了
 
 ### Mask R-CNN 框架
 ![Mask_R-CNN](./imgs/Mask_R-CNN.png)
+* 在Faster R-CNN的第二级上添加了与class和bbox并行的mask分支。
+* multi-task loss: L = Lcls + Lbox + Lmask
 
 ### ROIAlign
 ![ROIAlign](./imgs/ROIAlign.png)
+* 对feature map进行线性插值后再使用Pooling，
+ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微小的偏移(8 pixel)
 
 ### 主要创新点
-* ROIAlign:
+* mask分支：mask任务对分类和检测性能有帮助。
+* [ROIAlign](#roialign): ROI校准，解决了mask的偏移问题。同时对检测性能也有提升。
+* Lmask: 逐像素 sigmoid 的平均值，每类单独产生一个mask，依靠class分支获取类别标签。
+将掩模预测和分类预测拆解，没有引入类间竞争，从而大幅提高了性能。
 
 [返回顶部](#detector)
 
