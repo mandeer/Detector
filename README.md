@@ -11,6 +11,7 @@
 * [**YOLO9000**](#yolo9000)(2016.12)
 * [YOLOv3](#yolo3)(#2018.4)
 * [**SSD**](#ssd)(2015.12)
+* [RetinaNet](#retinanet)(2017.8)
 
 ------
 ## Requisites:
@@ -244,6 +245,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## SSD
 [SSD](https://arxiv.org/abs/1512.02325)
+
+[返回顶部](#detector)
+
+------
+## RetinaNet
+[RetinaNet](https://arxiv.org/abs/1708.02002)
 
 [返回顶部](#detector)
 
