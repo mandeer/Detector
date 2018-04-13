@@ -173,6 +173,9 @@ Faster R-CNN的代码主要参考了
 ## FPN
 [FPN](https://arxiv.org/abs/1612.03144)
 
+### FPN architecture
+![FPN](./imgs/FPN.png)
+
 [返回顶部](#detector)
 
 ------
