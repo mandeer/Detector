@@ -181,7 +181,8 @@ Faster R-CNN的代码主要参考了
 通过在[Faster R-CNN](#faster)基础上添加了一个用于预测目标掩模的新分支(mask branch)，
 在没有增加太多计算量，且没有使用各种trick的前提下，在COCO的一系列挑战任务
 (instance segmentation, object detection & person keypoint detection)中
-**都**取得了领先的结果。
+**都**取得了领先的结果。  
+作者开源了caffe2的[Mask R-CNN代码](https://github.com/facebookresearch/Detectron)
 
 ### 什么是实例分割
 ![Instance_segmentation](./imgs/Instance_segmentation.png)
