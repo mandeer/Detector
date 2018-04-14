@@ -227,6 +227,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## MaskX
 [Learning to Segment Every Thing](https://arxiv.org/abs/1711.10370)
 
+### 分割示例
+![MaskX_show](./imgs/MaskX_show.png)
+
 ### Mask^X R-CNN method
 ![MaskX](./imgs/MaskX.png)
 
