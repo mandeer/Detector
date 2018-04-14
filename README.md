@@ -7,9 +7,10 @@
 * [FPN](#fpn)(2016.12)
 * [Mask R-CNN](#mask)(2017.3)
 * [Mask^X R-CNN](#maskx)(2017.11)
+* [DenseBox](#densebox)(2015.9)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
-* [YOLOv3](#yolo3)(#2018.4)
+* [YOLOv3](#yolo3)(#2018.3)
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
 * [RetinaNet](#retinanet)(2017.8)
@@ -221,6 +222,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ![MaskX](./imgs/MaskX.png)
 
 ### 主要创新点
+
+[返回顶部](#detector)
+
+------
+## DenseBox
+[DenseBox](https://arxiv.org/abs/1509.04874)
 
 [返回顶部](#detector)
 
