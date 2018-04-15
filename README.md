@@ -76,6 +76,7 @@
     * SPPNet
     * Faster R-CNN
     * Mask R-CNN
+    * Mask^X R-CNN
     * 炉石传说
 
 [返回顶部](#detector)
@@ -226,6 +227,10 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## MaskX
 [Learning to Segment Every Thing](https://arxiv.org/abs/1711.10370)
+是指使用只有部分类别标注了mask label(但所有类别都标注了bbox label)的数据，
+训练出可以分割所有类别(包括没有mask标注的类)的模型。
+利用迁移学习的思想，通过在[Mask R-CNN](#mask)的原架构上添加了一个
+权重传递函数(weight transfer function)实现了这一目标。
 
 ### 分割示例
 ![MaskX_show](./imgs/MaskX_show.png)
