@@ -234,11 +234,21 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 
 ### 分割示例
 ![MaskX_show](./imgs/MaskX_show.png)
+* 图中绿框表示有mask标注的类，红框表示只有bbox标注的类
+* 可以很方便的从mask转换成bbox。反过来呢，提取的BBox特征是否对mask也有帮助？
 
 ### Mask^X R-CNN method
 ![MaskX](./imgs/MaskX.png)
+* 设A类有mask和bbox的标注，B类仅有bbox的标注
+* 使用A和B共同训练标准的目标检测(注意，A和B的训练需要是同质的)
+* 仅使用A训练mask和权重传递函数
+* 在推理时，权重传递函数用于预测每个类别的实例分割参数，
+从而使模型能够分割所有目标的类别。
 
 ### 主要创新点
+* 开创了了一个令人兴奋的新的大规模实例分割的研究方向。
+* 权重传递函数：
+* 结合MLP和FCN：FCN更多的关注于细节，而MLP可以提取全局(主要)特征。
 
 [返回顶部](#detector)
 
