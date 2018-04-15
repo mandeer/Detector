@@ -247,7 +247,8 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 
 ### 主要创新点
 * 开创了了一个令人兴奋的新的大规模实例分割的研究方向。
-* 权重传递函数：
+* 权重传递函数：链接了bbox和mask，将box head的特征迁移到mask head中，
+这样对于缺乏mask ground-truth的类别，只要有box ground-truth，依然可以进行有效分割。
 * 结合MLP和FCN：FCN更多的关注于细节，而MLP可以提取全局(主要)特征。
 
 [返回顶部](#detector)
