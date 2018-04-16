@@ -8,6 +8,8 @@
 * [FPN](#fpn)(2016.12)
 * [Mask R-CNN](#mask)(2017.3)
 * [Mask^X R-CNN](#maskx)(2017.11)
+* [DetectorNet](#detectornet)(2013)
+* [MultiBox](#MultiBox)(2013.12)
 * [DenseBox](#densebox)(2015.9)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
@@ -261,6 +263,19 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [返回顶部](#detector)
 
 ------
+## DetectorNet
+[DetectorNet](http://papers.nips.cc/paper/5207-deep-neural-networks-for-object-detection.pdf)
+
+
+[返回顶部](#detector)
+
+------
+## MultiBox
+[MultiBox](https://arxiv.org/abs/1312.2249)
+
+[返回顶部](#detector)
+
+------
 ## DenseBox
 [DenseBox](https://arxiv.org/abs/1509.04874)
 
@@ -302,6 +317,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [RetinaNet](https://arxiv.org/abs/1708.02002)
 
 [返回顶部](#detector)
+
+更多有关目标检测的论文，请参考
+[这里](https://www.cnblogs.com/zlslch/p/6970680.html)
 
   
   
