@@ -13,7 +13,7 @@
 * [DenseBox](#densebox)(2015.9)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
-* [YOLOv3](#yolo3)(#2018.3)
+* [YOLOv3](#yolov3)(#2018.3)
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
 * [RetinaNet](#retinanet)(2017.8)
@@ -87,6 +87,27 @@
 ------
 ## OverFeat
 [OverFeat](https://arxiv.org/abs/1312.6229)
+通过一个卷积网络来同时进行分类，定位和检测三个计算机视觉任务。
+
+### 基础知识
+* 卷积网络在小数据集上作用不明显
+* 卷积网络最大的优点是不用人工设计特征;最大的缺点是需要大量标注的数据。
+
+### offset max-pooling
+![offset_MaxPooling](./imgs/offset_MaxPooling.png)
+* Pooling时每次的起点不一样，Pooling后得到了3\*3\*C个特征图
+* 该操作可以作为最后一层Pooling的方法，移除了Poolig操作本应该带来的分辨率损失
+
+### FCN in test
+![FCN_in_test](./imgs/FCN_in_test.png)
+* 在测试时将全连接层替换成1\*1的卷积层
+* 允许测试时输入不同大小的图像，等价与传统的滑动窗口方法，滑动步长取决于Pooling的次数。
+
+### 主要创新点
+* offset pooling
+* 测试时将全连接层替换成1\*1的卷积层
+* 测试时使用不同大小图像作为的输出(Multi-Scale)
+* 卷积层参数共享: 固定卷积层的参数，将分类层替换层回归层，用于定位和检测。
 
 [返回顶部](#detector)
 
