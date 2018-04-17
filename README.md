@@ -15,7 +15,7 @@
 * [DenseBox](#densebox)(2015.9)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
-* [YOLOv3](#yolov3)(#2018.3)
+* [YOLOv3](#yolov3)(2018.3)
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
 * [RetinaNet](#retinanet)(2017.8)
@@ -210,6 +210,10 @@ Faster R-CNN的代码主要参考了
 ## FCN
 [FCN](https://arxiv.org/abs/1605.06211)
 
+
+## FCN architecture
+![FCN](./imgs/FCN.png)
+
 [返回顶部](#detector)
 
 ------
@@ -355,7 +359,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [返回顶部](#detector)
 
 更多有关目标检测的论文，请参考
-[这里](https://www.cnblogs.com/zlslch/p/6970680.html)
+[这里](https://www.cnblogs.com/zlslch/p/6970680.html)  
 想要查看VOC2012的排行榜请点击
 [这里](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4)
 
