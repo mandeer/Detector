@@ -214,17 +214,17 @@ Faster R-CNN的代码主要参考了
 因而拿到了CVPR 2015年的best paper honorable mention.
 
 ### FCN architecture
-![FCN](./imgs/FCN.png)
-使用语义分割的ground truth作为监督信息，训练了一个端到端的网络，
-该网络可以逐像素的预测label map。
+![FCN](./imgs/FCN.png)  
+* 使用语义分割的ground truth作为监督信息，训练了一个端到端、点到点的网络。
 
 ### 卷积化(convolutionalization)
-![fc2Conv](./imgs/fc2Conv.png)
-* 将全连接层替换成卷积层，因此FCN可以接受任意尺寸的输入图像。
+![fc2Conv](./imgs/fc2Conv.png)  
+* 将全连接层替换成卷积层，因此FCN可以接受任意尺寸的输入图像从而进行密集预测。
 
-### skip layers
-![skip_layers](./imgs/skip_layers.png)
-* 使用反卷积(转置卷积)和跳跃结构，融合深层和浅层的特征。
+### 跳跃结构(skip layers)
+![skip_layers](./imgs/skip_layers.png)  
+* 使用反卷积(转置卷积)和跳跃结构，融合深层粗略的全局信息和浅层精细的局部信息。
+* 全局信息解决的“是什么”，而局部信息解决的是“在哪里”
 
 ### 主要创新点
 * 卷积化
