@@ -209,10 +209,27 @@ Faster R-CNN的代码主要参考了
 ------
 ## FCN
 [FCN](https://arxiv.org/abs/1605.06211)
+提出了一种end-to-end、pixels-to-pixels的语义分割(Semantic Segmentation)方法，
+是将CNN结构应用到图像语义分割领域并取得突出结果的开山之作，
+因而拿到了CVPR 2015年的best paper honorable mention.
 
-
-## FCN architecture
+### FCN architecture
 ![FCN](./imgs/FCN.png)
+使用语义分割的ground truth作为监督信息，训练了一个端到端的网络，
+该网络可以逐像素的预测label map。
+
+### 卷积化(convolutionalization)
+![fc2Conv](./imgs/fc2Conv.png)
+* 将全连接层替换成卷积层，因此FCN可以接受任意尺寸的输入图像。
+
+### skip layers
+![skip_layers](./imgs/skip_layers.png)
+* 使用反卷积(转置卷积)和跳跃结构，融合深层和浅层的特征。
+
+### 主要创新点
+* 卷积化
+* 使用反卷积进行上采样
+* 使用跳跃结构融合深层和浅层的特征
 
 [返回顶部](#detector)
 
