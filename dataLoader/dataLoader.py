@@ -16,13 +16,11 @@ def getVocDataLoader(config):
     ])
 
     if config.dataset == 'VOC07':
-        train_data = VocBboxDataset(config.data_path, split='trainval', transforms=transform)
-        val_data = VocBboxDataset(config.data_path, split='test', transforms=transform)
+        train_data = VocBboxDataset(config.data_path, split='trainval', transform=transform)
+        val_data = VocBboxDataset(config.data_path, split='test', transform=transform)
     else:
-        train_data = VocBboxDataset(config.data_path, split='train', transforms=transform)
-        val_data = VocBboxDataset(config.data_path, split='val', transforms=transform)
-
-
+        train_data = VocBboxDataset(config.data_path, split='train', transform=transform)
+        val_data = VocBboxDataset(config.data_path, split='val', transform=transform)
 
     trainLoader = torch.utils.data.DataLoader(dataset=train_data,
                                               batch_size=config.batch_size,

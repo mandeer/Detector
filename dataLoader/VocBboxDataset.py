@@ -5,11 +5,11 @@ import numpy as np
 from PIL import Image
 import xml.etree.ElementTree as ET
 from torch.utils import data
-from torchvision import transforms as Trans
+from torchvision import transforms
 
 
 class VocBboxDataset(data.Dataset):
-    def __init__(self, data_dir, split='trainval', transforms=None, resizeImage=True):
+    def __init__(self, data_dir, split='trainval', transform=None, resizeImage=True):
 
         if split not in ['train', 'trainval', 'val']:
             if not (split == 'test' and data_dir.split('/')[-1] == 'VOC2007'):
@@ -25,15 +25,15 @@ class VocBboxDataset(data.Dataset):
         self.data_dir = data_dir
         self.label_names = VOC_BBOX_LABEL_NAMES
         self.resizeImage = resizeImage
-        if transforms is None:
-            normalize = Trans.Normalize(mean=[0.5, 0.5, 0.5],
-                                        std=[0.5, 0.5, 0.5])
+        if transform is None:
+            normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                             std=[0.229, 0.224, 0.225])
             self.transform = transforms.Compose([
                 transforms.ToTensor(),  # This makes it into [0,1]
-                transforms.normalize
+                normalize
             ])
         else:
-            self.transform = transforms
+            self.transform = transform
 
     def __getitem__(self, index):
         id_ = self.ids[index]
