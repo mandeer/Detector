@@ -237,12 +237,12 @@ Faster R-CNN的代码主要参考了
 ## R-FCN
 [R-FCN](https://arxiv.org/abs/1605.06409)
 使用位置敏感得分图(position-sensitive score maps),
-解决了图像分类中(平移不变性)和物体检测(平移变换性)两者间的矛盾，
-从而解决了[Faster R-CNN](#fast)中部分卷积层无法共享计算的问题。
+解决了图像分类(平移不变性)和物体检测(平移变换性)两者间的矛盾，
+从而解决了[Faster R-CNN](#faster)中部分卷积层无法共享计算的问题。
 
 ### R-FCN architecture
 ![R-FCN](./imgs/R-FCN.png)
-* 在ROI层之后，没有可学习的层，从而来加快训练和测试
+* 在ROI层之后，没有可学习的层，从而加快了训练和测试的速度
 
 ### position-sensitive RoI pooling
 ![pooling](./imgs/position-sensitive_RoI_pooling.png)
