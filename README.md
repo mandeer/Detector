@@ -237,6 +237,12 @@ Faster R-CNN的代码主要参考了
 ## R-FCN
 [R-FCN](https://arxiv.org/abs/1605.06409)
 
+
+### R-FCN architecture
+![R-FCN](./imgs/R-FCN.png)
+
+### 主要创新点
+
 [返回顶部](#detector)
 
 ------
