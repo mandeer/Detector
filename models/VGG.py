@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 import math
+from .BasicModule import BasicModule
 
 
 __all__ = [
@@ -21,10 +22,11 @@ model_urls = {
 }
 
 
-class VGG(nn.Module):
+class VGG(BasicModule):
 
     def __init__(self, features, num_classes=1000, init_weights=True):
         super(VGG, self).__init__()
+        self.model_name = 'vgg'
         self.features = features
         self.classifier = nn.Sequential(
             nn.Linear(512 * 7 * 7, 4096),

@@ -45,7 +45,6 @@ def main(config):
         return
 
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
