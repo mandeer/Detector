@@ -191,8 +191,7 @@ if __name__ == '__main__':
     __test()
 
 
-def generate_anchor_base(base_size=16, ratios=[0.5, 1, 2],
-                         anchor_scales=[8, 16, 32]):
+def generate_anchor_base(base_size=16, ratios=[0.5, 1, 2], anchor_scales=[8, 16, 32]):
     """Generate anchor base windows by enumerating aspect ratio and scales.
 
     Generate anchors that are scaled and modified to the given aspect ratios.
@@ -229,8 +228,7 @@ def generate_anchor_base(base_size=16, ratios=[0.5, 1, 2],
     py = base_size / 2.
     px = base_size / 2.
 
-    anchor_base = np.zeros((len(ratios) * len(anchor_scales), 4),
-                           dtype=np.float32)
+    anchor_base = np.zeros((len(ratios) * len(anchor_scales), 4), dtype=np.float32)
     for i in six.moves.range(len(ratios)):
         for j in six.moves.range(len(anchor_scales)):
             h = base_size * anchor_scales[j] * np.sqrt(ratios[i])

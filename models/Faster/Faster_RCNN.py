@@ -1,7 +1,6 @@
-from __future__ import division
 import numpy as np
 import cupy as cp
-from models.utils.nms import non_maximum_suppression
+from .utils.nms import non_maximum_suppression
 from torch import nn
 
 class FasterRCNN(nn.Module):
