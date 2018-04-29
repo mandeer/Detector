@@ -3,28 +3,21 @@ from torch import nn
 from torchvision.models import vgg16
 from .RPN import RegionProposalNetwork
 from .Faster_RCNN import FasterRCNN
-from model.roi_module import RoIPooling2D
+from .RoIPooling import RoIPooling2D
 from utils import array_tool as at
-from utils.config import opt
 
 
 def decom_vgg16():
     # the 30th layer of features is relu of conv5_3
-    if opt.caffe_pretrain:
-        model = vgg16(pretrained=False)
-        if not opt.load_path:
-            model.load_state_dict(t.load(opt.caffe_pretrain_path))
-    else:
-        model = vgg16(not opt.load_path)
 
+    model = vgg16()
     features = list(model.features)[:30]
     classifier = model.classifier
 
     classifier = list(classifier)
     del classifier[6]
-    if not opt.use_drop:
-        del classifier[5]
-        del classifier[2]
+    del classifier[5]
+    del classifier[2]
     classifier = nn.Sequential(*classifier)
 
     # freeze top4 conv
@@ -37,27 +30,19 @@ def decom_vgg16():
 
 class FasterRCNNVGG16(FasterRCNN):
     """Faster R-CNN based on VGG-16.
-    For descriptions on the interface of this model, please refer to
-    :class:`model.faster_rcnn.FasterRCNN`.
 
     Args:
         n_fg_class (int): The number of classes excluding the background.
-        ratios (list of floats): This is ratios of width to height of
-            the anchors.
+        ratios (list of floats): This is ratios of width to height of the anchors.
         anchor_scales (list of numbers): This is areas of anchors.
             Those areas will be the product of the square of an element in
-            :obj:`anchor_scales` and the original area of the reference
-            window.
+            :obj:`anchor_scales` and the original area of the reference window.
 
     """
 
     feat_stride = 16  # downsample 16x for output of conv5 in vgg16
 
-    def __init__(self,
-                 n_fg_class=20,
-                 ratios=[0.5, 1, 2],
-                 anchor_scales=[8, 16, 32]
-                 ):
+    def __init__(self, n_fg_class=20, ratios=[0.5, 1, 2], anchor_scales=[8, 16, 32]):
                  
         extractor, classifier = decom_vgg16()
 
@@ -75,11 +60,7 @@ class FasterRCNNVGG16(FasterRCNN):
             classifier=classifier
         )
 
-        super(FasterRCNNVGG16, self).__init__(
-            extractor,
-            rpn,
-            head,
-        )
+        super(FasterRCNNVGG16, self).__init__(extractor, rpn, head)
 
 
 class VGG16RoIHead(nn.Module):
@@ -96,8 +77,7 @@ class VGG16RoIHead(nn.Module):
 
     """
 
-    def __init__(self, n_class, roi_size, spatial_scale,
-                 classifier):
+    def __init__(self, n_class, roi_size, spatial_scale, classifier):
         # n_class includes the background
         super(VGG16RoIHead, self).__init__()
 
