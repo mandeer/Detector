@@ -1,8 +1,8 @@
 import torch as t
 from torch import nn
 from torchvision.models import vgg16
-from model.region_proposal_network import RegionProposalNetwork
-from model.faster_rcnn import FasterRCNN
+from .RPN import RegionProposalNetwork
+from .Faster_RCNN import FasterRCNN
 from model.roi_module import RoIPooling2D
 from utils import array_tool as at
 from utils.config import opt
