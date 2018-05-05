@@ -5,7 +5,7 @@ import random
 import torch
 from torch.autograd import Variable
 from dataLoader import getVocDataLoader
-import models
+from models.Faster import FasterRCNNVGG16
 
 
 
@@ -43,6 +43,10 @@ def main(config):
     else:
         print('Only support Coco and VOC!!')
         return
+
+    faster_rcnn = FasterRCNNVGG16()
+
+    print(faster_rcnn)
 
 
 if __name__ == '__main__':
