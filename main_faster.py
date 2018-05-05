@@ -2,6 +2,7 @@
 import argparse
 import os
 import random
+import time
 from collections import namedtuple
 import torch
 import torch.nn as nn
@@ -61,6 +62,7 @@ class FasterRCNNTrainer(nn.Module):
 
     def __init__(self, config, faster_rcnn):
         super(FasterRCNNTrainer, self).__init__()
+        self.config = config
 
         self.faster_rcnn = faster_rcnn
         self.rpn_sigma = 3  # opt.rpn_sigma
@@ -200,7 +202,7 @@ class FasterRCNNTrainer(nn.Module):
         save_dict = dict()
 
         save_dict['model'] = self.faster_rcnn.state_dict()
-        save_dict['config'] = opt._state_dict()
+        save_dict['config'] = self.config._state_dict()
         save_dict['other_info'] = kwargs
         save_dict['vis_info'] = self.vis.state_dict()
 
@@ -213,19 +215,19 @@ class FasterRCNNTrainer(nn.Module):
             for k_, v_ in kwargs.items():
                 save_path += '_%s' % v_
 
-        t.save(save_dict, save_path)
+        torch.save(save_dict, save_path)
         self.vis.save([self.vis.env])
         return save_path
 
     def load(self, path, load_optimizer=True, parse_opt=False, ):
-        state_dict = t.load(path)
+        state_dict = torch.load(path)
         if 'model' in state_dict:
             self.faster_rcnn.load_state_dict(state_dict['model'])
         else:  # legacy way, for backward compatibility
             self.faster_rcnn.load_state_dict(state_dict)
             return self
         if parse_opt:
-            opt._parse(state_dict['config'])
+            self.config._parse(state_dict['config'])
         if 'optimizer' in state_dict and load_optimizer:
             self.optimizer.load_state_dict(state_dict['optimizer'])
         return self
