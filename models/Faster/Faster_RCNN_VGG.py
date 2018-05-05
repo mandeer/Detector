@@ -1,17 +1,18 @@
 import torch as t
 from torch import nn
-from torchvision.models import vgg16
+from models.Backbone import vgg16_bn
 from .RPN import RegionProposalNetwork
 from .Faster_RCNN import FasterRCNN
 from .RoIPooling import RoIPooling2D
 from utils import array_tool as at
 
 
-def decom_vgg16():
-    # the 30th layer of features is relu of conv5_3
+def decom_vgg16(preTrainedModelPath):
+    # the 43th layer of features is relu of conv5_3
 
-    model = vgg16()
-    features = list(model.features)[:30]
+    model = vgg16_bn()
+    model.load_state_dict(preTrainedModelPath)
+    features = list(model.features)[:43]
     classifier = model.classifier
 
     classifier = list(classifier)
@@ -42,9 +43,9 @@ class FasterRCNNVGG16(FasterRCNN):
 
     feat_stride = 16  # downsample 16x for output of conv5 in vgg16
 
-    def __init__(self, n_fg_class=20, ratios=[0.5, 1, 2], anchor_scales=[8, 16, 32]):
+    def __init__(self, config, n_fg_class=20, ratios=[0.5, 1, 2], anchor_scales=[8, 16, 32]):
                  
-        extractor, classifier = decom_vgg16()
+        extractor, classifier = decom_vgg16(preTrainedModelPath=config.pretrained)
 
         rpn = RegionProposalNetwork(
             512, 512,

@@ -1,7 +1,6 @@
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 import math
-from .BasicModule import BasicModule
 
 
 __all__ = [
@@ -22,7 +21,7 @@ model_urls = {
 }
 
 
-class VGG(BasicModule):
+class VGG(nn.Module):
 
     def __init__(self, features, num_classes=1000, init_weights=True):
         super(VGG, self).__init__()

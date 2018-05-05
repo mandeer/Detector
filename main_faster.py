@@ -281,9 +281,11 @@ def main(config):
         print('Only support Coco and VOC!!')
         return
 
-    faster_rcnn = FasterRCNNVGG16()
-
+    faster_rcnn = FasterRCNNVGG16(config)
     print(faster_rcnn)
+    # trainer = FasterRCNNTrainer(faster_rcnn).cuda()
+
+
 
 
 if __name__ == '__main__':
@@ -302,8 +304,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--dataset',        type=str,      default='VOC07',      help='COCO or VOC07, VOC12')
     parser.add_argument('--mode',           type=str,      default='train',     help='train, test')
-    parser.add_argument('--model',          type=str,      default='VGG',     help='model')
-    parser.add_argument('--pretrained',     type=str,      default='',          help='model for test or retrain')
+    parser.add_argument('--model',          type=str,      default='VGG',       help='model')
+    parser.add_argument('--pretrained',     type=str,      default='./preTrainedModels/vgg/vgg16.pth')
 
     config = parser.parse_args()
     if config.use_cuda and not torch.cuda.is_available():

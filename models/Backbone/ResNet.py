@@ -1,7 +1,6 @@
 import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
-from .BasicModule import BasicModule
 
 
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
@@ -94,7 +93,7 @@ class Bottleneck(nn.Module):
         return out
 
 
-class ResNet(BasicModule):
+class ResNet(nn.Module):
 
     def __init__(self, block, layers, num_classes=1000):
         self.inplanes = 64
