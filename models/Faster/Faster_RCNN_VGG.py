@@ -1,4 +1,4 @@
-import torch as t
+import torch
 from torch import nn
 from models.Backbone import vgg16_bn
 from .RPN import RegionProposalNetwork
@@ -11,7 +11,7 @@ def decom_vgg16(preTrainedModelPath):
     # the 43th layer of features is relu of conv5_3
 
     model = vgg16_bn()
-    model.load_state_dict(preTrainedModelPath)
+    model.load_state_dict(torch.load(preTrainedModelPath))
     features = list(model.features)[:43]
     classifier = model.classifier
 
