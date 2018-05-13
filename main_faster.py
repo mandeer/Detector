@@ -84,7 +84,7 @@ class FasterRCNNTrainer(nn.Module):
         self.roi_cm = ConfusionMeter(21)
         self.meters = {k: AverageValueMeter() for k in LossTuple._fields}  # average loss
 
-    def forward(self, imgs, bboxes, labels, scale):
+    def forward(self, imgs, bboxes, labels, scale=1.0):
         """Forward Faster R-CNN and calculate losses.
 
         Here are notations used.
@@ -102,8 +102,7 @@ class FasterRCNNTrainer(nn.Module):
                 Its shape is :math:`(N, R)`. The background is excluded from
                 the definition, which means that the range of the value
                 is :math:`[0, L - 1]`. :math:`L` is the number of foreground classes.
-            scale (float): Amount of scaling applied to
-                the raw image during preprocessing.
+            scale (float): Amount of scaling applied to the raw image during preprocessing.
 
         Returns:
             namedtuple of 5 losses
@@ -179,9 +178,14 @@ class FasterRCNNTrainer(nn.Module):
 
         return LossTuple(*losses)
 
-    def train_step(self, imgs, bboxes, labels, scale):
+    def scale_lr(self, decay=0.1):
+        for param_group in self.optimizer.param_groups:
+            param_group['lr'] *= decay
+        return self.optimizer
+
+    def train_step(self, imgs, bboxes, labels):
         self.optimizer.zero_grad()
-        losses = self.forward(imgs, bboxes, labels, scale)
+        losses = self.forward(imgs, bboxes, labels)
         losses.total_loss.backward()
         self.optimizer.step()
         self.update_meters(losses)
@@ -283,8 +287,32 @@ def main(config):
 
     faster_rcnn = FasterRCNNVGG16(config)
     print(faster_rcnn)
-    # trainer = FasterRCNNTrainer(faster_rcnn).cuda()
+    trainer = FasterRCNNTrainer(config, faster_rcnn).cuda()
 
+    best_map = 0
+    lr_ = config.lr
+    for epoch in range(config.n_epochs):
+        trainer.reset_meters()
+        for ii, (img, bbox_, label_) in enumerate(trainLoader):
+            img, bbox, label = img.cuda().float(), bbox_.cuda(), label_.cuda()
+            img, bbox, label = Variable(img), Variable(bbox), Variable(label)
+            trainer.train_step(img, bbox, label)
+
+        eval_result = eval(valLoader, faster_rcnn, test_num=len(valLoader))
+        best_map = eval_result['map']
+        best_path = trainer.save(best_map=best_map)
+
+        if epoch == 9:
+            trainer.load(best_path)
+            trainer.scale_lr(config.lr_decay)
+            lr_ = lr_ * config.lr_decay
+
+        trainer.vis.plot('test_map', eval_result['map'])
+        log_info = 'lr:{}, map:{},loss:{}'.format(str(lr_), str(eval_result['map']),
+                                                  str(trainer.get_meter_data()))
+        trainer.vis.log(log_info)
+        # if epoch == 13:
+        #     break
 
 
 
@@ -295,12 +323,14 @@ if __name__ == '__main__':
     parser.add_argument('--n-epochs',       type=int,      default=50)
     parser.add_argument('--batch-size',     type=int,      default=1)
     parser.add_argument('--n-workers',      type=int,      default=4)
-    parser.add_argument('--lr',             type=float,    default=0.1)
+    parser.add_argument('--lr',             type=float,    default=1e-3)
+    parser.add_argument('--lr-decay',       type=float,    default=0.1)
     parser.add_argument('--weight-decay',   type=float,    default=0.0005)
     parser.add_argument('--out-path',       type=str,      default='./output')
     parser.add_argument('--seed',           type=int,      default=0,           help='random seed for all')
     parser.add_argument('--log-step',       type=int,      default=100)
     parser.add_argument('--use-cuda',       type=bool,     default=True,        help='enables cuda')
+    parser.add_argument('--use-adam',       type=bool,     default=False,       help='Adam or SGD')
 
     parser.add_argument('--dataset',        type=str,      default='VOC07',      help='COCO or VOC07, VOC12')
     parser.add_argument('--mode',           type=str,      default='train',     help='train, test')
