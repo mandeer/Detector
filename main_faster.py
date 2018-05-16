@@ -46,15 +46,12 @@ def get_optimizer(config, faster_rcnn):
 
 class FasterRCNNTrainer(nn.Module):
     """wrapper for conveniently training. return losses
-
     The losses include:
-
     * :obj:`rpn_loc_loss`: The localization loss for Region Proposal Network (RPN).
     * :obj:`rpn_cls_loss`: The classification loss for RPN.
     * :obj:`roi_loc_loss`: The localization loss for the head module.
     * :obj:`roi_cls_loss`: The classification loss for the head module.
     * :obj:`total_loss`: The sum of 4 loss above.
-
     Args:
         faster_rcnn (model.FasterRCNN):
             A Faster R-CNN model that is going to be trained.
@@ -70,7 +67,7 @@ class FasterRCNNTrainer(nn.Module):
 
         # target creator create gt_bbox gt_label etc as training targets.
         self.anchor_target_creator = AnchorTargetCreator()
-        self.proposal_target_creator = ProposalTargetCreator()
+        self.proposal_target_creator = ProposalTargetCreator(n_sample=config.n_sample)
 
         self.loc_normalize_mean = faster_rcnn.loc_normalize_mean
         self.loc_normalize_std = faster_rcnn.loc_normalize_std
@@ -322,6 +319,7 @@ if __name__ == '__main__':
     parser.add_argument('--image-size',     type=int,      default=32)
     parser.add_argument('--n-epochs',       type=int,      default=50)
     parser.add_argument('--batch-size',     type=int,      default=1)
+    parser.add_argument('--n-sample',       type=int,      default=64)
     parser.add_argument('--n-workers',      type=int,      default=4)
     parser.add_argument('--lr',             type=float,    default=1e-3)
     parser.add_argument('--lr-decay',       type=float,    default=0.1)

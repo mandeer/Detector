@@ -91,6 +91,8 @@ class RegionProposalNetwork(nn.Module):
 
         """
         n, _, hh, ww = x.shape
+        H = np.float32(img_size[0])
+        W = np.float32(img_size[1])
         anchor = _enumerate_shifted_anchor(
             np.array(self.anchor_base),
             self.feat_stride, hh, ww)
@@ -118,7 +120,7 @@ class RegionProposalNetwork(nn.Module):
                 anchor, img_size,
                 scale=scale)
             batch_index = i * np.ones((len(roi),), dtype=np.int32)
-            rois.append(roi)
+            rois.append(roi / [W, H, W, H])
             roi_indices.append(batch_index)
 
         rois = np.concatenate(rois, axis=0)
