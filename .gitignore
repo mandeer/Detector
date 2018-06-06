@@ -10,3 +10,7 @@ images/
 
 # preTrained models
 preTrainedModels/
+
+# build
+build/
+*.so
