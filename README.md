@@ -341,6 +341,13 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## DetectorNet
 [DetectorNet](http://papers.nips.cc/paper/5207-deep-neural-networks-for-object-detection.pdf)
 
+### DetectorNet框架
+![DetectorNet](./imgs/DetectorNet.png)
+
+
+### 主要创新点
+
+
 [返回顶部](#detector)
 
 ------
