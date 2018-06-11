@@ -340,13 +340,20 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## DetectorNet
 [DetectorNet](http://papers.nips.cc/paper/5207-deep-neural-networks-for-object-detection.pdf)
+将目标检测看做是一个回归问题，证明了DNN-based的目标掩码回归可以捕捉到强烈的几何信息。
 
 ### DetectorNet框架
 ![DetectorNet](./imgs/DetectorNet.png)
-
+* 输出是full, left, right, top, bottom共5个mask, 其中后四个是半框, 图1仅显示了其中3个。
+* scale1: multi-scale + 滑动窗口(子窗口)
+* scale2: 精细化调整, bboxs放大1.2倍后，再跑一遍
 
 ### 主要创新点
-
+* 目标函数添加正则化约束: 解决正负标签不均衡问题。
+* 5个Mask: full, left, right, top, bottom
+    * 解决目标重叠问题
+* multi-scale + 精细化调整(refinement): 
+    * 解决由于mask比较小, 无法精确定位的问题。
 
 [返回顶部](#detector)
 
