@@ -11,7 +11,6 @@
 * [Mask R-CNN](#mask)(2017.3)
 * [Mask^X R-CNN](#maskx)(2017.11)
 * [DetectorNet](#detectornet)(2013)
-* [MultiBox](#multibox)(2013.12, 2014.12)
 * [DenseBox](#densebox)(2015.9)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
@@ -354,14 +353,6 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
     * 解决目标重叠问题
 * multi-scale + 精细化调整(refinement): 
     * 解决由于mask比较小, 无法精确定位的问题。
-
-[返回顶部](#detector)
-
-------
-## MultiBox
-[MultiBox1](https://arxiv.org/abs/1312.2249)
-
-[MultiBox2](https://arxiv.org/abs/1412.1441)
 
 [返回顶部](#detector)
 
