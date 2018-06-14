@@ -13,6 +13,7 @@
 * [DetectorNet](#detectornet)(2013)
 * [DenseBox](#densebox)(2015.9)
 * [MTCNN](#mtcnn)(2016.4)
+* [FaceBoxes](#faceboxes)(2017.08)
 * [YOLO](#yolo)(2015.6)
 * [YOLO9000](#yolo9000)(2016.12)
 * [YOLOv3](#yolov3)(2018.3)
@@ -247,14 +248,12 @@ Faster R-CNN的代码主要参考了
 ### position-sensitive RoI pooling
 ![pooling](./imgs/position-sensitive_RoI_pooling.png)
 
-
 ### 主要创新点
 * 位置敏感得分图
     * 使用1\*1的卷积得到K^2(C+1)维的位置敏感得分图
     * 位置敏感的ROI Pooling：具体的pooling细节参考上图
     * 投票(vote, 均值)得到C+1维的向量
     * softmax or bbox regression(4K^2)
-
 
 [返回顶部](#detector)
 
@@ -396,6 +395,13 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * 关键点检测有助于人脸检测的性能
 * Multi-source training
 * Online Hard sample mining
+
+[返回顶部](#detector)
+
+------
+## FaceBoxes
+[FaceBoxes](https://arxiv.org/abs/1708.05234)
+
 
 [返回顶部](#detector)
 
