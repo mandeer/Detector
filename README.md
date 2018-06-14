@@ -382,12 +382,20 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## MTCNN
 [MTCNN](https://arxiv.org/abs/1604.02878v1)
-
+使用级联的CNN, 实现了实时(CPU)的人脸检测的人脸关键点的回归。
 
 ### MTCNN 级联架构
 ![MTCNN](./imgs/MTCNN.png)
+* 图像金字塔输入
+* PNet(Proposal, FCN): 浅层CNN, 快速生成候选窗口
+* RNet(Refine): 略复杂的CNN, 快速过滤候选窗口
+* ONet(Output): 强大的CNN, 输出bbox和关键点
 
 ###　主要创新点
+* 实时的人脸检测及关键点回归方案
+* 关键点检测有助于人脸检测的性能
+* Multi-source training
+* Online Hard sample mining
 
 [返回顶部](#detector)
 
