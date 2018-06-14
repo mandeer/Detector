@@ -386,7 +386,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ### MTCNN 级联架构
 ![MTCNN](./imgs/MTCNN.png)
 * 图像金字塔输入
-* PNet(Proposal, FCN): 浅层CNN, 快速生成候选窗口
+* PNet(Proposal, FCN, 滑动窗口): 浅层CNN, 快速生成候选窗口
 * RNet(Refine): 略复杂的CNN, 快速过滤候选窗口
 * ONet(Output): 强大的CNN, 输出bbox和关键点
 
@@ -401,6 +401,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## FaceBoxes
 [FaceBoxes](https://arxiv.org/abs/1708.05234)
+
+
+### FaceBoxes 网络结构
+![FaceBoxes](./imgs/FaceBoxes.png)
+
+### 主要创新点
 
 
 [返回顶部](#detector)
