@@ -401,13 +401,25 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## FaceBoxes
 [FaceBoxes](https://arxiv.org/abs/1708.05234)
-
+是另一种可以在CPU上做到实时的人脸检测算法, 且该算法的运行速度与人脸个数无关。
 
 ### FaceBoxes 网络结构
 ![FaceBoxes](./imgs/FaceBoxes.png)
+* RDCL: 快速降低feature map的大小, 以加快CNN前向运行加速
+* MSCL: 通过Inception模块和multi-scale feature maps获得不同大小的感受野
 
 ### 主要创新点
-
+* RDCL(Rapidly Digested ConvolutionalLayers):
+    * Shrinking the spatial size of input: large stride sizes
+    * Choosing suitable kernel size
+    * Reducing the number of output channels: C.ReLU
+* MSCL(Multiple Scale Convolutional Layers):
+    * Multi-scale design along the dimension of network depth: 
+    multi-scale feature maps
+    * Multi-scale design along the dimension of network width: 
+    inception module
+* Anchor densification strategy:
+    * 增加小人脸的采样密度
 
 [返回顶部](#detector)
 
