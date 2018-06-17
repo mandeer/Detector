@@ -528,17 +528,29 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## SSD
 [SSD](https://arxiv.org/abs/1512.02325)
 
+### SSD framework
+![SSD](./imgs/SSD.png)
+
+### SSD model
+![SSD_model](./imgs/SSD_model.png)
+
 [返回顶部](#detector)
 
 ------
 ## DSSD
 [DSSD](https://arxiv.org/abs/1701.06659)
 
+### DSSD vs. SSD
+![DSSD](./imgs/DSSD.png)
+
 [返回顶部](#detector)
 
 ------
 ## FSSD
 [FSSD](https://arxiv.org/abs/1712.00960)
+
+### FSSD vs. SSD
+![FSSD](./imgs/FSSD.png)
 
 [返回顶部](#detector)
 
