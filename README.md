@@ -19,6 +19,7 @@
 * [YOLOv3](#yolov3)(2018.3)
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
+* [FSSD](#fssd)(2017.12)
 * [RetinaNet](#retinanet)(2017.8)
 
 ------
@@ -497,6 +498,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## DSSD
 [DSSD](https://arxiv.org/abs/1701.06659)
+
+[返回顶部](#detector)
+
+------
+## FSSD
+[FSSD](https://arxiv.org/abs/1712.00960)
 
 [返回顶部](#detector)
 
