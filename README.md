@@ -497,9 +497,30 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## YOLOv3
 [YOLOv3](https://pjreddie.com/publications/)
+对[YOLO](#yolo)又做了一些更新, 使其变的更好。
 
 ### 性能对比
 ![inference_YOLO](./imgs/inference_YOLO.png)
+
+### Bounding boxes
+![YOLO_Bbox](./imgs/YOLO_Bbox.png)
+
+### The Deal
+* Bounding Box Prediction:
+    * dimension clusters as anchor boxes
+    * 每个bbox通过逻辑回归预测一个是否存在目标的得分
+* Class Prediction
+    * using multi-label classification(binary cross-entropy loss) for each box
+* Predictions Across Scales
+    * 3 different scales similar to [FPN](#fpn)
+    * NxNx(3x(4+1+80)) per scale with COCO
+    * 使用聚类得到9个bbox priors
+* Feature Extractor
+    * Darknet-53
+
+### 不足
+* AP50时表现非常好, 但是, 当IOU的阈值增加时, 效果不如[RetinaNet](#retinanet)
+* 大目标检测APl, 性能变差了
 
 [返回顶部](#detector)
 
