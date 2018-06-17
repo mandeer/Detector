@@ -15,7 +15,7 @@
 * [MTCNN](#mtcnn)(2016.4)
 * [FaceBoxes](#faceboxes)(2017.08)
 * [YOLO](#yolo)(2015.6)
-* [YOLO9000](#yolo9000)(2016.12)
+* [YOLOv2](#yolov2)(2016.12)
 * [YOLOv3](#yolov3)(2018.3)
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
@@ -459,8 +459,23 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [返回顶部](#detector)
 
 ------
-## YOLO9000
-[YOLO9000](https://arxiv.org/abs/1612.08242)
+## YOLOv2
+[YOLOv2](https://arxiv.org/abs/1612.08242)
+是对[YOLO](#yolo)的改进，在保持原有速度的同时提升了精度。  
+同时，作者还提出了一种目标分类与检测的联合训练方法，
+同时在COCO和ImageNet数据集中进行训练得到**YOLO9000**，
+实现了9000多种物体的实时检测。
+
+### The path from YOLO to YOLOv2
+![YOLOv2](./imgs/YOLOv2.png)
+
+### WordTree
+![YOLO9000](./imgs/YOLO9000.png)
+
+### 主要创新点
+* 对YOLO的一系列分析和改进
+* Darknet-19
+* WordTree
 
 [返回顶部](#detector)
 
