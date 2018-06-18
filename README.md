@@ -569,6 +569,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## DeformableConvNets
 [Deformable ConvNets](https://arxiv.org/abs/1703.06211)
 
+### Deformable Conv
+![DeformableConv](./imgs/DeformableConv.png)
+
 [返回顶部](#detector)
 
 ------
