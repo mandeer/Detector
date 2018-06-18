@@ -547,10 +547,16 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * (c+4)kmn outputs for a mxn feature map
 
 ### 主要创新点
+* 使用小卷积滤波器来预测特征图上固定的一组默框的类别分数和位置偏移
+* 使用不同尺度的特征图和不同的宽高比来检测不同大小和形状的目标
 * 速度快: 去掉了挑选候选框和之后的特征(或像素)重采样
 * Convolutional predictors for detection: YOLO使用的是全连接层
 * 每一个目标至少有一个默认框: 不同于MultiBox(每一个目标只有一个默认框)
-* Hard negative mining
+* Hard negative mining: 正负样本比为1:3
+
+### 不足
+* 小目标检出率比较低
+* SSD有较小的定位误差, 但是易混淆相似类别的对象
 
 [返回顶部](#detector)
 
