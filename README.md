@@ -6,14 +6,14 @@
 * [Fast R-CNN](#fast)(2015.4)
 * [Faster R-CNN](#faster)(2015.6)
 * [FCN](#fcn)(2014.11)
-* [R-FCN](#r-fcn)(2016.05)
+* [R-FCN](#r-fcn)(2016.5)
 * [FPN](#fpn)(2016.12)
 * [Mask R-CNN](#mask)(2017.3)
 * [Mask^X R-CNN](#maskx)(2017.11)
 * [DetectorNet](#detectornet)(2013)
 * [DenseBox](#densebox)(2015.9)
 * [MTCNN](#mtcnn)(2016.4)
-* [FaceBoxes](#faceboxes)(2017.08)
+* [FaceBoxes](#faceboxes)(2017.8)
 * [YOLO](#yolo)(2015.6)
 * [YOLOv2](#yolov2)(2016.12)
 * [YOLOv3](#yolov3)(2018.3)
@@ -529,12 +529,28 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## SSD
 [SSD](https://arxiv.org/abs/1512.02325)
+是另一个常用的基于CNN的实时通用目标检测系统, 且其速度快过[YOLO](#yolo), 
+精度与[Faster R-CNN](#faster)持平。 
 
 ### SSD framework
 ![SSD](./imgs/SSD.png)
+* 默认框: 
+    * nulti-scale feature maps
+    * each location
+    * different aspect ratios
+* model loss = localization loss(Smooth L1) + confidence loss(Softmax)
 
 ### SSD model
 ![SSD_model](./imgs/SSD_model.png)
+* base network + auxiliary structure
+* Multi-scale feature maps for detection
+* (c+4)kmn outputs for a mxn feature map
+
+### 主要创新点
+* 速度快: 去掉了挑选候选框和之后的特征(或像素)重采样
+* Convolutional predictors for detection: YOLO使用的是全连接层
+* 每一个目标至少有一个默认框: 不同于MultiBox(每一个目标只有一个默认框)
+* Hard negative mining
 
 [返回顶部](#detector)
 
