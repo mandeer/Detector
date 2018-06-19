@@ -563,9 +563,19 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## DSSD
 [DSSD](https://arxiv.org/abs/1701.06659)
+通过使用反卷积增加了大量的上下文信息, 提高了上下文相关联目标的检出率, 
+且改善了原始[SSD](#ssd)对小目标检测效果不好的问题。
 
 ### DSSD vs. SSD
 ![DSSD](./imgs/DSSD.png)
+* 基准网络从 VGG 变成 Residual-101
+* 添加了Prediction module 和 Deconvolutional module
+
+### 主要创新点
+* 更好的基准网络: Residual-101
+* Prediction module: 改善子任务的子网络
+* Deconvolution Module: 与[FPN](#fpn)的head略有不同
+* 通过改写卷积层的weight和bias去除Batch Norm操作
 
 [返回顶部](#detector)
 
@@ -613,7 +623,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ![RetinaNet](./imgs/RetinaNet.png)
 * FPN Backbone
 * 使用密集的 Anchors: 9 anchors per level
-* 分类子网和框回归子网共享结构, 但确使用各自的参数
+* 分类子网和框回归子网共享结构, 但却使用各自的参数
 
 ### 主要创新点
 * one-stage目标检测率低的很大一部分原因来自类别不平衡
