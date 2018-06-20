@@ -22,6 +22,7 @@
 * [FSSD](#fssd)(2017.12)
 * [RFBNet](#rfbnet)(2017.11)
 * [DeformableConvNets](#deformableconvnets)(2017.3)
+* [DSOD](#dsod)(2017.8)
 * [RetinaNet](#retinanet)(2017.8)
 
 ------
@@ -616,6 +617,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [返回顶部](#detector)
 
 ------
+## DSOD
+[DSOD](https://arxiv.org/abs/1708.01241)
+
+[返回顶部](#detector)
+
+------
 ## RetinaNet
 [RetinaNet](https://arxiv.org/abs/1708.02002)
 提出了Focal Loss, 降低分类清晰的样本损失的权重, 
@@ -639,9 +646,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * Focal Loss: 解决了one-stage目标检测的类别不平衡问题
 * RetinaNet: 速度与精度
 
-
 [返回顶部](#detector)
 
+------
 更多有关目标检测的论文，请参考
 [这里](https://www.cnblogs.com/zlslch/p/6970680.html)  
 想要查看VOC2012的排行榜请点击
