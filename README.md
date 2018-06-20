@@ -582,9 +582,18 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## FSSD
 [FSSD](https://arxiv.org/abs/1712.00960)
+通过融合不同尺度的特征，在速度损失很少的情况下，大幅提升了性能。
 
 ### FSSD vs. SSD
 ![FSSD](./imgs/FSSD.png)
+* 使用双线性插值(bilinear interpolation)进行上采样
+* 使用串联(concatenation)的方式合并不同的特征图
+* 使用融合后的特征图构建特征金字塔
+
+### 主要创新点
+* 新的特征融合框架: 不同与[DSSD](#dssd)和[FPN](#fpn)
+* 小目标检测优于SSD
+* 降低了检测出多个或部分物体(multi-part of one object)的概率
 
 [返回顶部](#detector)
 
