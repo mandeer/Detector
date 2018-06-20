@@ -620,6 +620,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## DSOD
 [DSOD](https://arxiv.org/abs/1708.01241)
 
+### DSOD vs. SSD
+![DSOD](./imgs/DSOD.png)
+
 [返回顶部](#detector)
 
 ------
