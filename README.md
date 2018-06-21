@@ -601,9 +601,19 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## RFBNet
 [RFBNet](https://arxiv.org/abs/1711.07767)
+借鉴人类视觉的感受野结构(Receptive Fields, RFs), 提出了RF Block (RFB) module, 
+然后将RFB module集成进了[SSD](#ssd)结构。
+作者提供了[源码](https://github.com/ruinmessi/RFBNet)
 
 ### RFB module
 ![RFB_module](./imgs/RFB_module.png)
+* multiple branches with different kernels
+* 扩张卷积(空洞卷积)
+
+### 主要创新点
+* RFB module
+* RFB Net: 嵌入了RFB模块的SSD
+
 
 [返回顶部](#detector)
 
