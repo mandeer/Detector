@@ -20,6 +20,7 @@
 * [SSD](#ssd)(2015.12)
 * [DSSD](#dssd)(2017.1)
 * [FSSD](#fssd)(2017.12)
+* [ESSD](#essd)(2018.1)
 * [RFBNet](#rfbnet)(2017.11)
 * [DeformableConvNets](#deformableconvnets)(2017.3)
 * [DSOD](#dsod)(2017.8)
@@ -599,6 +600,17 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [返回顶部](#detector)
 
 ------
+## ESSD
+[ESSD](https://arxiv.org/abs/1801.05918)
+
+### ESSD framework
+![ESSD](./imgs/ESSD.png)
+
+### 主要创新点
+
+[返回顶部](#detector)
+
+------
 ## RFBNet
 [RFBNet](https://arxiv.org/abs/1711.07767)
 借鉴人类视觉的感受野结构(Receptive Fields, RFs), 提出了RF Block (RFB) module, 
@@ -663,7 +675,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 
 ------
 更多有关目标检测的论文，请参考
-[这里](https://www.cnblogs.com/zlslch/p/6970680.html)  
+[这里](https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html)  
 想要查看VOC2012的排行榜请点击
 [这里](http://host.robots.ox.ac.uk:8080/leaderboard/displaylb.php?challengeid=11&compid=4)
 
