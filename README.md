@@ -602,11 +602,18 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## ESSD
 [ESSD](https://arxiv.org/abs/1801.05918)
+提出了一种新的不同尺度特征融合的方法，在尽量小损失速度的前提下，提升[SSD](#ssd)的精度。
 
 ### ESSD framework
 ![ESSD](./imgs/ESSD.png)
+* 仅前三个预测层使用了Extension module
+* Conv4_3, Conv7, Conv8_2 and Conv9_2 can receive gradient backpropagation from multiple layers
+### Extension module
+![Extension module](./imgs/Extension_module.png)
 
 ### 主要创新点
+* Extension module
+* 加权平均深度(Weighted average depth): 预测层的加权平均深度间的差异不应太大
 
 [返回顶部](#detector)
 
