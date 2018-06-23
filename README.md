@@ -648,9 +648,28 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## DSOD
 [DSOD](https://arxiv.org/abs/1708.01241)
+是首个从零开始学习并且获得高精度的目标检测算法。
 
 ### DSOD vs. SSD
 ![DSOD](./imgs/DSOD.png)
+* 骨干网络(backbone sub-network): DenseNets的变体
+* 前端子网(front-end sub-network): Dense Prediction Structure
+
+### 使用预训练模型
+* 优点
+    * 有许多公开发布的先进模型
+    * 重用已训练好的模型更方便且节省训练时间
+    * 缓解目标检测任务标注数据较少的问题
+* 缺点
+    * 网络结构设计不够灵活
+    * 学习偏差(Learning bias): 分类和检测任务之间的损失函数和类别分布都不相同
+    * 域不匹配(Domain mismatch): 深度图像, 医学图像等 
+
+### 从０开始训练目标检测器的原则
+* Proposal-free: Roi Pooling阻碍了梯度的传播
+* Deep Supervision: dense layer-wise connection
+* Dense Prediction Structure: 
+    * Learning Half and Reusing Half
 
 [返回顶部](#detector)
 
