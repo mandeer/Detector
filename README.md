@@ -639,9 +639,23 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## DeformableConvNets
 [Deformable ConvNets](https://arxiv.org/abs/1703.06211)
+提出了可变形卷积, 大大增强了CNN的几何变换建模能力。
+证明了在CNN中学习密集的空间变换是可行和有效的。
 
 ### Deformable Conv
 ![DeformableConv](./imgs/DeformableConv.png)
+* 增加模块中的空间采样位置以及额外的偏移量，并且从目标任务中学习偏移量，且不需要额外的监督
+* 可变形卷积和与普通卷积有相同的输入和输出，可以很容易地进行替换
+* 可变形卷积能很容易地通过标准反向传播进行端到端的训练
+
+### 可变形卷积的感受野
+![receptive_field](./imgs/receptive_field.png)
+* 可变形卷积可以根据目标的尺寸和形状进行自适应调整
+* 增强了对非刚性物体的表达能力
+
+### 主要创新点
+* deformable convolution
+* deformable RoI pooling
 
 [返回顶部](#detector)
 
@@ -663,7 +677,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * 缺点
     * 网络结构设计不够灵活
     * 学习偏差(Learning bias): 分类和检测任务之间的损失函数和类别分布都不相同
-    * 域不匹配(Domain mismatch): 深度图像, 医学图像等 
+    * 域不匹配(Domain mismatch): 深度图像, 医学图像, 多光谱图像等 
 
 ### 从０开始训练目标检测器的原则
 * Proposal-free: Roi Pooling阻碍了梯度的传播
