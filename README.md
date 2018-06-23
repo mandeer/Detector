@@ -24,7 +24,8 @@
 * [RFBNet](#rfbnet)(2017.11)
 * [DeformableConvNets](#deformableconvnets)(2017.3)
 * [DSOD](#dsod)(2017.8)
-* [RetinaNet](#retinanet)(2017.8)
+* [**RetinaNet**](#retinanet)(2017.8)
+* [Light-Head R-CNN](#light-head)(2017.11)
 
 ------
 ## Requisites:
@@ -710,6 +711,12 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * one-stage目标检测率低的很大一部分原因来自类别不平衡
 * Focal Loss: 解决了one-stage目标检测的类别不平衡问题
 * RetinaNet: 速度与精度
+
+[返回顶部](#detector)
+
+------
+## Light-Head R-CNN
+[Light-Head R-CNN](https://arxiv.org/abs/1711.07264)
 
 [返回顶部](#detector)
 
