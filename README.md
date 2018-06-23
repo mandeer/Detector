@@ -718,6 +718,9 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ## Light-Head
 [Light-Head R-CNN](https://arxiv.org/abs/1711.07264)
 
+### Light-Head R-CNN 框架
+![Light-Head](./imgs/Light-Head.png)
+
 [返回顶部](#detector)
 
 ------
