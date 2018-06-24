@@ -21,12 +21,12 @@ class Label(object):
         self.labels = []
 
 
-class Dataset(data.Dataset):
+class DataSet(data.Dataset):
     ''' Load image, labels, boxes from a list file.
         The list file is like:
         a.jpg xmin ymin xmax ymax label xmin ymin xmax ymax label ...
     '''
-    def __init__(self, root, list_file, transform):
+    def __init__(self, root, list_file, transform=None):
         '''
         Args:
           root:         (str) ditectory to images.
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     from PIL import ImageDraw
     root = '../datasets/voc/VOC2012/JPEGImages'
     list_file = '../datasets/voc/voc12_trainval.txt'
-    dataset = Dataset(root, list_file)
+    dataset = DataSet(root, list_file)
 
     num = len(dataset)
     print('num: ', num)
