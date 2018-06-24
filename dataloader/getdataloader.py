@@ -5,15 +5,17 @@ import torchvision.transforms as transforms
 
 from dataloader.dataset import DataSet
 from dataloader.en_decoder import RetinaBoxCoder
+from dataloader.dataaugmentor import DataAugmentor
 
 
 box_coder = RetinaBoxCoder()
-
+dataugmentor = DataAugmentor()
+img_size = 640
 
 def transform_train(img, boxes, labels):
-    # img, boxes = random_flip(img, boxes)
-    # img, boxes = resize(img, boxes, size=img_size, max_size=img_size)
-    # img = pad(img, (img_size, img_size))
+    img, boxes = dataugmentor.random_flip(img, boxes)
+    img, boxes = dataugmentor.resize(img, boxes, size=img_size, max_size=img_size)
+    img = dataugmentor.pad(img, (img_size, img_size))
     img = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
@@ -23,8 +25,8 @@ def transform_train(img, boxes, labels):
 
 
 def transform_test(img, boxes, labels):
-    # img, boxes = resize(img, boxes, size=img_size, max_size=img_size)
-    # img = pad(img, (img_size, img_size))
+    img, boxes = dataugmentor.resize(img, boxes, size=img_size, max_size=img_size)
+    img = dataugmentor.pad(img, (img_size, img_size))
     img = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
@@ -76,7 +78,7 @@ if __name__ == '__main__':
     for ii, (img, boxes, labels) in enumerate(trainLoader):
         img = detransforms(img[0])
         W, H = img.size
-        # boxes, labels = box_coder.decode(boxes, labels, [W, H])
+        boxes, labels = box_coder.decode_test(boxes, labels, [W, H])
 
         img.show()
         print(ii)
