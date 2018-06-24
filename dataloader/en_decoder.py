@@ -6,12 +6,12 @@ from dataloader.utils import meshgrid
 from dataloader.utils import box_iou, box_nms, change_box_order
 
 
-class RetinaBoxCoder:
+class RetinaBoxCoder(object):
     def __init__(self):
         self.anchor_areas = (32*32., 64*64., 128*128., 256*256., 512*512.)  # p3 -> p7
         self.aspect_ratios = (1/2., 1/1., 2/1.)
         self.scale_ratios = (1., pow(2, 1/3.), pow(2, 2/3.))
-        self.anchor_boxes = self._get_anchor_boxes(input_size=torch.tensor([640., 640.]))
+        self.anchor_boxes = self._get_anchor_boxes(input_size=torch.FloatTensor([640.0, 640.0]))
 
     def _get_anchor_wh(self):
         '''Compute anchor width and height for each feature map.
