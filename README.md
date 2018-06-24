@@ -717,9 +717,14 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 ------
 ## Light-Head
 [Light-Head R-CNN](https://arxiv.org/abs/1711.07264)
+通过精心的设计，在**速度**和精度上都超过了One-Stage Object Detector, 
+捍卫了Two-Stage Object Detector。
 
 ### Light-Head R-CNN 框架
 ![Light-Head](./imgs/Light-Head.png)
+* R-CNN subnet: 
+
+### 主要创新点
 
 [返回顶部](#detector)
 
