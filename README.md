@@ -732,7 +732,7 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 * single-stage detector也有缺点: 需要对每个anchor进行分类
 * Two-Stage Object Detector加速方法
     * 把ROI Pooling的feature map变得特别薄
-    * 预测部分使用一个全连接层(Faster R-CNN是三个)
+    * 预测部分使用一个全连接层(Faster R-CNN是两个)
 
 [返回顶部](#detector)
 
