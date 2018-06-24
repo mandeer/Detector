@@ -79,8 +79,8 @@ class DataSet(data.Dataset):
         data = self.dataes[idx]
         img = Image.open(os.path.join(self.root, data.imgName)).convert('RGB')
 
-        boxes = torch.from_numpy(np.array(data.bboxes))
-        labels = torch.from_numpy(np.array(data.labels))
+        boxes = torch.from_numpy(np.array(data.bboxes, dtype=np.float32))
+        labels = torch.from_numpy(np.array(data.labels, dtype=np.int64))
         if self.transform:
             img, boxes, labels = self.transform(img, boxes, labels)
         return img, boxes, labels
