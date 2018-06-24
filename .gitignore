@@ -6,6 +6,7 @@ __pycache__/
 
 # data or images
 [Dd]ataset/
+[Dd]atasets/
 images/
 
 # preTrained models
