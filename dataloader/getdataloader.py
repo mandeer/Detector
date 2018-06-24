@@ -59,6 +59,11 @@ if __name__ == '__main__':
     config.test_label_file = '../datasets/voc//voc07_test.txt'
     config.batch_size = 1
 
+    detransforms = transforms.Compose([
+        transforms.Normalize((-0.485/0.229, -0.456/0.224, -0.406/0.225), (1/0.229, 1/0.224, 1/0.225)),
+        transforms.ToPILImage(),
+    ])
+
     args = vars(config)
     print('------------ Options -------------')
     for key, value in sorted(args.items()):
@@ -69,7 +74,9 @@ if __name__ == '__main__':
     print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
 
     for ii, (img, boxes, labels) in enumerate(trainLoader):
-        print(img.shape)
-        print(boxes.shape)
-        print(labels.shape)
+        img = detransforms(img[0])
+        W, H = img.size
+        # boxes, labels = box_coder.decode(boxes, labels, [W, H])
+
+        img.show()
         print(ii)
