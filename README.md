@@ -722,9 +722,17 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 
 ### Light-Head R-CNN 框架
 ![Light-Head](./imgs/Light-Head.png)
-* R-CNN subnet: 
+* large separable convolution: k = 7 - 15
+* “thin” feature maps before RoI warping
+* a single fully-connected layer for prediction
 
 ### 主要创新点
+* Two-Stage Object Detector速度慢的原因
+    * heavy-head: head 会运行很多次
+* single-stage detector也有缺点: 需要对每个anchor进行分类
+* Two-Stage Object Detector加速方法
+    * 把ROI Pooling的feature map变得特别薄
+    * 预测部分使用一个全连接层(Faster R-CNN是三个)
 
 [返回顶部](#detector)
 
