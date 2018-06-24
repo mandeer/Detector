@@ -9,13 +9,12 @@ from dataloader.dataaugmentor import DataAugmentor
 
 
 box_coder = RetinaBoxCoder()
-dataugmentor = DataAugmentor()
-img_size = 640
+dataugmentor = DataAugmentor(imgSize=640)
 
 def transform_train(img, boxes, labels):
     img, boxes = dataugmentor.random_flip(img, boxes)
-    img, boxes = dataugmentor.resize(img, boxes, size=img_size, max_size=img_size)
-    img = dataugmentor.pad(img, (img_size, img_size))
+    img, boxes = dataugmentor.resize(img, boxes)
+    img = dataugmentor.pad(img)
     img = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
@@ -25,8 +24,8 @@ def transform_train(img, boxes, labels):
 
 
 def transform_test(img, boxes, labels):
-    img, boxes = dataugmentor.resize(img, boxes, size=img_size, max_size=img_size)
-    img = dataugmentor.pad(img, (img_size, img_size))
+    img, boxes = dataugmentor.resize(img, boxes)
+    img = dataugmentor.pad(img)
     img = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
@@ -75,10 +74,15 @@ if __name__ == '__main__':
     trainLoader, testLoader = get_data_loader(config)
     print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
 
+    import cv2
+    import numpy as np
     for ii, (img, boxes, labels) in enumerate(trainLoader):
         img = detransforms(img[0])
         W, H = img.size
-        boxes, labels = box_coder.decode_test(boxes, labels, [W, H])
 
-        img.show()
+        image = cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
+        cv2.imshow("OpenCV", image)
+        cv2.waitKey(1000)
+        print(boxes.shape)
+        print(labels.shape)
         print(ii)

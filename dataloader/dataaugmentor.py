@@ -14,12 +14,11 @@ class DataAugmentor(object):
             self.imgW = imgSize[0]
             self.imgH = imgSize[1]
 
-    def pad(self, img, target_size):
+    def pad(self, img):
         '''Pad image with zeros to the specified size.
 
         Args:
           img: (PIL.Image) image to be padded.
-          target_size: (tuple) target size of (ow,oh).
 
         Returns:
           img: (PIL.Image) padded image.
@@ -28,7 +27,7 @@ class DataAugmentor(object):
           `tf.image.pad_to_bounding_box`
         '''
         w, h = img.size
-        canvas = Image.new('RGB', target_size)
+        canvas = Image.new('RGB', (self.imgW, self.imgH))
         canvas.paste(img, (0, 0))  # paste on the left-up corner
         return canvas
 
@@ -55,7 +54,7 @@ class DataAugmentor(object):
                 boxes[:, 2] = xmax
         return img, boxes
 
-    def resize(self, img, boxes, size, max_size=1000, random_interpolation=False):
+    def resize(self, img, boxes, max_size=1000, random_interpolation=False):
         '''Resize the input PIL image to given size.
 
         If boxes is not None, resize boxes accordingly.
@@ -80,18 +79,8 @@ class DataAugmentor(object):
         >> img, _ = resize(img, None, (500,600))  # resize image only
         '''
         w, h = img.size
-        if isinstance(size, int):
-            size_min = min(w, h)
-            size_max = max(w, h)
-            sw = sh = float(size) / size_min
-            if sw * size_max > max_size:
-                sw = sh = float(max_size) / size_max
-            ow = int(w * sw + 0.5)
-            oh = int(h * sh + 0.5)
-        else:
-            ow, oh = size
-            sw = float(ow) / w
-            sh = float(oh) / h
+        sw = float(self.imgW) / w
+        sh = float(self.imgH) / h
 
         method = random.choice([
             Image.BOX,
@@ -100,7 +89,7 @@ class DataAugmentor(object):
             Image.BICUBIC,
             Image.LANCZOS,
             Image.BILINEAR]) if random_interpolation else Image.BILINEAR
-        img = img.resize((ow, oh), method)
+        img = img.resize((self.imgW, self.imgH), method)
         if boxes is not None:
             boxes = boxes * torch.FloatTensor([sw, sh, sw, sh])
         return img, boxes
