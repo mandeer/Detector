@@ -26,7 +26,7 @@ class Dataset(data.Dataset):
         The list file is like:
         a.jpg xmin ymin xmax ymax label xmin ymin xmax ymax label ...
     '''
-    def __init__(self, root, list_file, transform=None):
+    def __init__(self, root, list_file, transform):
         '''
         Args:
           root:         (str) ditectory to images.
@@ -87,7 +87,6 @@ class Dataset(data.Dataset):
 
     def __len__(self):
         return self.num_imgs
-
 
 
 if __name__ == '__main__':
