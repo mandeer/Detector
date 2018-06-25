@@ -5,6 +5,7 @@ import random
 import argparse
 import torch
 import torch.optim as optim
+from torch.autograd import Variable
 from dataloader import get_data_loader
 from models import RetinaNet
 from models.loss import FocalLoss
@@ -32,9 +33,11 @@ class Solver(object):
         self.model.train()
         train_loss = 0
         for batch_idx, (inputs, loc_targets, cls_targets) in enumerate(self.trainLoader):
-            inputs = inputs.to(device)
-            loc_targets = loc_targets.to(device)
-            cls_targets = cls_targets.to(device)
+            if self.use_cuda:
+                inputs = Variable(inputs).cuda()
+                loc_targets = Variable(loc_targets).cuda()
+                cls_targets = Variable(cls_targets).cuda()
+
 
             self.optimizer.zero_grad()
             loc_preds, cls_preds = self.model(inputs)
@@ -52,9 +55,10 @@ class Solver(object):
         test_loss = 0
         with torch.no_grad():
             for batch_idx, (inputs, loc_targets, cls_targets) in enumerate(self.testLoader):
-                inputs = inputs.to(device)
-                loc_targets = loc_targets.to(device)
-                cls_targets = cls_targets.to(device)
+                if self.use_cuda:
+                    inputs = Variable(inputs).cuda()
+                    loc_targets = Variable(loc_targets).cuda()
+                    cls_targets = Variable(cls_targets).cuda()
 
                 loc_preds, cls_preds = self.model(inputs)
                 loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets)
@@ -107,6 +111,9 @@ def main(config):
     print(model)
 
     solver = Solver(config, model, trainLoader, testLoader)
+    for epoch in range(config.n_epochs):
+        solver.train(epoch)
+        solver.test(epoch)
 
 
 if __name__ == '__main__':
