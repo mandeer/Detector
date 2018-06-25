@@ -43,8 +43,8 @@ def get_data_loader(conf):
                       list_file=conf.test_label_file,
                       transform=transform_test)
 
-    trainLoader = torch.utils.data.DataLoader(trainset, batch_size=conf.batch_size, shuffle=True, num_workers=4)
-    testLoader = torch.utils.data.DataLoader(testset, batch_size=8, shuffle=False, num_workers=4)
+    trainLoader = torch.utils.data.DataLoader(trainset, batch_size=conf.batch_size, shuffle=True, num_workers=conf.n_workers)
+    testLoader = torch.utils.data.DataLoader(testset, batch_size=conf.batch_size, shuffle=False, num_workers=conf.n_workers)
 
     return trainLoader, testLoader
 
@@ -59,6 +59,7 @@ if __name__ == '__main__':
     config.test_root = '../datasets/voc/VOC2007/JPEGImages'
     config.test_label_file = '../datasets/voc//voc07_test.txt'
     config.batch_size = 1
+    config.n_workers = 4
 
     detransforms = transforms.Compose([
         transforms.Normalize((-0.485/0.229, -0.456/0.224, -0.406/0.225), (1/0.229, 1/0.224, 1/0.225)),
