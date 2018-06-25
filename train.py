@@ -45,9 +45,9 @@ class Solver(object):
             loss.backward()
             self.optimizer.step()
 
-            train_loss += loss.item()
+            train_loss += float(loss.data[0])
             print('train_loss: %.3f | avg_loss: %.3f [%d/%d]'
-                  % (loss.item(), train_loss / (batch_idx + 1), batch_idx + 1, len(self.trainLoader)))
+                  % (loss.data[0], train_loss / (batch_idx + 1), batch_idx + 1, len(self.trainLoader)))
 
     def test(self, epoch):
         print('\nTest')
@@ -62,9 +62,9 @@ class Solver(object):
 
                 loc_preds, cls_preds = self.model(inputs)
                 loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets)
-                test_loss += loss.item()
+                test_loss += float(loss.data[0])
                 print('test_loss: %.3f | avg_loss: %.3f [%d/%d]'
-                      % (loss.item(), test_loss / (batch_idx + 1), batch_idx + 1, len(self.testLoader)))
+                      % (loss.data[0], test_loss / (batch_idx + 1), batch_idx + 1, len(self.testLoader)))
 
         # Save checkpoint
         global best_loss
@@ -121,7 +121,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--image-size',         type=int,       default=2)
     parser.add_argument('--n-epochs',           type=int,       default=50)
-    parser.add_argument('--batch-size',         type=int,       default=128)
+    parser.add_argument('--batch-size',         type=int,       default=2)
     parser.add_argument('--n-workers',          type=int,       default=4)
     parser.add_argument('--lr',                 type=float,     default=0.01)
     parser.add_argument('--out-path',           type=str,       default='./output')
