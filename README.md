@@ -693,6 +693,8 @@ ROIPooling的量化操作(rounding)会使mask与实际物体位置有一个微�
 [RetinaNet](https://arxiv.org/abs/1708.02002)
 提出了Focal Loss, 降低分类清晰的样本损失的权重, 
 从而解决了one-stage检测器中正负样本失衡的问题。
+本工程实现的RetinaNet主要参考了
+[这里](https://github.com/kuangliu/pytorch-retinanet)
 
 ### Focal Loss
 ![FocalLoss](./imgs/FocalLoss.png)
