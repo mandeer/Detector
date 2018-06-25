@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from fpn import FPN50
+from models.fpn import FPN50
 
 
 class RetinaNet(nn.Module):
