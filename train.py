@@ -106,7 +106,7 @@ def main(config):
     trainLoader, testLoader = get_data_loader(config)
     print('train samples num: ', len(trainLoader), '  test samples num: ', len(testLoader))
 
-    # net
+    # model net
     model = RetinaNet(num_classes=config.n_classes)
     print(model)
 

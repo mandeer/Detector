@@ -36,9 +36,12 @@ class RetinaNet(nn.Module):
         return nn.Sequential(*layers)
 
 
-def test():
-    net = RetinaNet(21)
-    loc_preds, cls_preds = net(torch.randn(1,3,640,640))
-    print(loc_preds.size(), cls_preds.size())
+if __name__ == '__main__':
+    from torch.autograd import Variable
+    def test():
+        net = RetinaNet(21)
+        loc_preds, cls_preds = net(Variable(torch.randn(1, 3, 640, 640)))
+        print(net)
+        print(loc_preds.size(), cls_preds.size())
 
-# test()
+    test()

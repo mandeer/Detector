@@ -117,10 +117,13 @@ def FPN101():
     return FPN(Bottleneck, [3,4,23,3])
 
 
-def test():
-    net = FPN50()
-    fms = net(torch.randn(1,3,640,640))
-    for fm in fms:
-        print(fm.size())
+if __name__ == '__main__':
+    from torch.autograd import Variable
+    def test():
+        net = FPN50()
+        fms = net(Variable(torch.randn(1, 3, 640, 640)))
+        print(net)
+        for fm in fms:
+            print(fm.size())
 
-# test()
+    test()
