@@ -8,7 +8,7 @@ from dataloader.en_decoder import RetinaBoxCoder
 from dataloader.dataaugmentor import DataAugmentor
 
 
-box_coder = RetinaBoxCoder()
+box_coder = RetinaBoxCoder(imgSize=640)
 dataugmentor = DataAugmentor(imgSize=640)
 
 def transform_train(img, boxes, labels):

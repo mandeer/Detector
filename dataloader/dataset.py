@@ -35,7 +35,6 @@ class DataSet(data.Dataset):
         '''
         self.root = root
         self.transform = transform
-
         self.dataes = []
 
         if isinstance(list_file, list):
