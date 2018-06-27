@@ -10,6 +10,7 @@ from dataloader import get_data_loader
 from models import RetinaNet
 from models.loss import FocalLoss
 
+
 class Solver(object):
     def __init__(self, config, model, trainLoader, testLoader):
         self.model = model
@@ -109,6 +110,8 @@ def main(config):
     # model net
     model = RetinaNet(num_classes=config.n_classes)
     print(model)
+    if config.pretrained != '':
+        model.load_state_dict(torch.load(config.pretrained))
 
     solver = Solver(config, model, trainLoader, testLoader)
     for epoch in range(config.n_epochs):
