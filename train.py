@@ -126,7 +126,7 @@ if __name__ == '__main__':
     parser.add_argument('--n-epochs',           type=int,       default=50)
     parser.add_argument('--batch-size',         type=int,       default=2)
     parser.add_argument('--n-workers',          type=int,       default=4)
-    parser.add_argument('--lr',                 type=float,     default=0.01)
+    parser.add_argument('--lr',                 type=float,     default=0.001)
     parser.add_argument('--out-path',           type=str,       default='./output')
     parser.add_argument('--seed',               type=int,       default=666,            help='random seed for all')
     parser.add_argument('--log-step',           type=int,       default=100)
