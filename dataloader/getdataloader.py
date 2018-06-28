@@ -44,7 +44,7 @@ def get_data_loader(conf):
                       transform=transform_test)
 
     trainLoader = torch.utils.data.DataLoader(trainset, batch_size=conf.batch_size, shuffle=True, num_workers=conf.n_workers)
-    testLoader = torch.utils.data.DataLoader(testset, batch_size=conf.batch_size, shuffle=False, num_workers=conf.n_workers)
+    testLoader = torch.utils.data.DataLoader(testset, batch_size=1, shuffle=False, num_workers=conf.n_workers)
 
     return trainLoader, testLoader
 

@@ -30,6 +30,7 @@ class Solver(object):
         self.n_epochs = config.n_epochs
         self.log_step = config.log_step
         self.out_path = config.out_path
+        self.best_loss = float('inf')
 
     def train(self, epoch):
         print('\nEpoch: %d' % epoch)
@@ -41,7 +42,6 @@ class Solver(object):
                 inputs = Variable(inputs).cuda()
                 loc_targets = Variable(loc_targets).cuda()
                 cls_targets = Variable(cls_targets).cuda()
-
 
             self.optimizer.zero_grad()
             loc_preds, cls_preds = self.model(inputs)
@@ -70,9 +70,8 @@ class Solver(object):
                   % (loss.data[0], test_loss / (batch_idx + 1), batch_idx + 1, len(self.testLoader)))
 
         # Save checkpoint
-        global best_loss
         test_loss /= len(self.testLoader)
-        if test_loss < best_loss:
+        if test_loss < self.best_loss:
             print('Saving..')
             state = {
                 'net': self.model.state_dict(),
@@ -82,7 +81,7 @@ class Solver(object):
             if not os.path.isdir(os.path.dirname(config.checkpoint)):
                 os.mkdir(os.path.dirname(config.checkpoint))
             torch.save(state, config.checkpoint)
-            best_loss = test_loss
+            self.best_loss = test_loss
 
 def main(config):
     # use cuda ?
