@@ -2,7 +2,7 @@ import os
 import math
 import torch
 
-from models.retina import RetinaNet
+from models.retinaNet.retina import RetinaNet
 
 
 model_dir = '../preTrainedModels/resnet'

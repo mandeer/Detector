@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from .retina import RetinaNet
+from .retinaNet import RetinaNet
