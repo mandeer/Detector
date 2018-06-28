@@ -190,7 +190,7 @@
 [Faster R-CNN](https://arxiv.org/abs/1506.01497)
 提出了RPN(Region Proposal Network), 终于将目标检测的四个基本步骤,
 生成候选区域、特征提取、分类、边框回归统一到一个深度网络框架之中。  
-Faster R-CNN的代码主要参考了
+Faster R-CNN的PyTorch代码可以参考
 [这里](https://github.com/chenyuntc/simple-faster-rcnn-pytorch)
 
 ### Faster R-CNN architecture

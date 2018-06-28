@@ -102,3 +102,28 @@ class FocalLoss(nn.Module):
         print('loc_loss: %.3f | cls_loss: %.3f' % (loc_loss.data[0]/num_pos, cls_loss.data[0]/num_pos), end=' | ')
         loss = (loc_loss + cls_loss)/num_pos
         return loss
+
+
+if __name__ == '__main__':
+    import numpy as np
+    import matplotlib.pyplot as plt
+    delta = np.arange(0, 1.01, 0.01)
+    gamma = np.array([0, 0.5, 1, 2, 5])
+
+    a1 = plt.subplot(1, 2, 1)
+    plt.title('The weight for Cross-Entropy loss')
+    plt.xlabel('delta')
+    plt.ylabel('weight')
+    a2 = plt.subplot(1, 2, 2)
+    plt.title('Focal Loss')
+    plt.xlabel('delta')
+    plt.ylabel('loss')
+    for i in range(len(gamma)):
+        weight = np.power(delta, gamma[i])
+        a1.plot(delta, weight, label='gamma: ' + str(gamma[i]))
+        loss = -1 * weight * np.log(1-delta)
+        a2.plot(delta, loss, label='gamma: ' + str(gamma[i]))
+
+    a1.legend()
+    a2.legend()
+    plt.show()
