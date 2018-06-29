@@ -13,4 +13,6 @@
 * delta 是指预测值与真实值之间的差异
 * gamma = 0 时, Focal Loss 就是 Cross-Entropy loss
 
-
+### 训练初期发散
+* 将iou<0.5的author的类别设为0时, 会在训练的初期就发散
+* lr=0.01时, 需要将Focal Loss的alpha设为0.9999才能不发散(背景的author太多)

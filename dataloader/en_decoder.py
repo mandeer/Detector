@@ -96,7 +96,7 @@ class RetinaBoxCoder(object):
         cls_targets = 1 + labels[max_ids]
 
         cls_targets[max_ious<0.5] = 0
-        ignore = (max_ious>0.3) & (max_ious<0.5)  # ignore ious between [0.4,0.5]
+        ignore = (max_ious>0.3) & (max_ious<0.5)  # ignore ious between [0.3,0.5]
         cls_targets[ignore] = -1                  # mark ignored to -1
         return loc_targets, cls_targets
 
