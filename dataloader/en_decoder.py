@@ -95,9 +95,9 @@ class RetinaBoxCoder(object):
         loc_targets = torch.cat([loc_xy, loc_wh], 1)
         cls_targets = 1 + labels[max_ids]
 
-        # cls_targets[max_ious<0.5] = 0
-        # ignore = (max_ious>0.4) & (max_ious<0.5)  # ignore ious between [0.4,0.5]
-        # cls_targets[ignore] = -1                  # mark ignored to -1
+        cls_targets[max_ious<0.5] = 0
+        ignore = (max_ious>0.3) & (max_ious<0.5)  # ignore ious between [0.4,0.5]
+        cls_targets[ignore] = -1                  # mark ignored to -1
         return loc_targets, cls_targets
 
     def decode(self, loc_preds, cls_preds, input_size):
