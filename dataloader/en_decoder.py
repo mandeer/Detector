@@ -115,7 +115,7 @@ class RetinaBoxCoder(object):
         CLS_THRESH = 0.5
         NMS_THRESH = 0.5
 
-        input_size = torch.Tensor(input_size)
+        input_size = torch.FloatTensor(input_size)
         anchor_boxes = self._get_anchor_boxes(input_size)  # xywh
 
         loc_xy = loc_preds[:, :2]
@@ -125,8 +125,12 @@ class RetinaBoxCoder(object):
         wh = loc_wh.exp() * anchor_boxes[:, 2:]
         boxes = torch.cat([xy-wh/2, xy+wh/2], 1)  # [#anchors,4]
 
-        score, labels = cls_preds.sigmoid().max(1)          # [#anchors,]
+        score, labels = cls_preds.sigmoid().max(1)  # [#anchors,]
         ids = score > CLS_THRESH
-        ids = ids.nonzero().squeeze()             # [#obj,]
+        ids = ids.nonzero().squeeze()  # [#obj,]
+        if (len(ids) == 0):
+            max = torch.max(score)
+            ids = score >= max
+            ids = ids.nonzero().squeeze()
         keep = box_nms(boxes[ids], score[ids], threshold=NMS_THRESH)
-        return boxes[ids][keep], labels[ids][keep]
+        return boxes[ids][keep], labels[ids][keep], score[ids][keep]
