@@ -22,7 +22,7 @@ class Solver(object):
 
         self.optimizer = optim.SGD(self.model.parameters(), lr=config.lr, momentum=0.9, weight_decay=1e-4)
         self.criterion = FocalLoss(num_classes=self.n_classes)
-        self.lr_scheduler = lr_scheduler.MultiStepLR(self.optimizer, milestones=[5, 8], gamma=0.1)
+        self.lr_scheduler = lr_scheduler.MultiStepLR(self.optimizer, milestones=[6, 9], gamma=0.1)
         if self.use_cuda:
             self.model = self.model.cuda()
             self.criterion = self.criterion.cuda()
@@ -45,7 +45,7 @@ class Solver(object):
 
             self.optimizer.zero_grad()
             loc_preds, cls_preds = self.model(inputs)
-            loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets)
+            loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets, change_alpha=True)
             loss.backward()
             self.optimizer.step()
 
@@ -64,7 +64,7 @@ class Solver(object):
                 cls_targets = Variable(cls_targets).cuda()
 
             loc_preds, cls_preds = self.model(inputs)
-            loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets)
+            loss = self.criterion(loc_preds, loc_targets, cls_preds, cls_targets, change_alpha=False)
             test_loss += float(loss.data[0])
             print('test_loss: %.3f | avg_loss: %.3f [%d/%d]'
                   % (loss.data[0], test_loss / (batch_idx + 1), batch_idx + 1, len(self.testLoader)))
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--image-size',         type=int,       default=2)
-    parser.add_argument('--n-epochs',           type=int,       default=10)
+    parser.add_argument('--n-epochs',           type=int,       default=12)
     parser.add_argument('--batch-size',         type=int,       default=4)
     parser.add_argument('--n-workers',          type=int,       default=4)
     parser.add_argument('--lr',                 type=float,     default=0.01)
