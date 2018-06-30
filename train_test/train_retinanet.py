@@ -134,15 +134,15 @@ if __name__ == '__main__':
     parser.add_argument('--log-step',           type=int,       default=100)
     parser.add_argument('--use-cuda',           type=bool,      default=True,           help='enables cuda')
 
-    parser.add_argument('--train-root',         type=str,       default='./datasets/voc/VOC2007/JPEGImages')
-    parser.add_argument('--train-label-file',   type=str,       default='./datasets/voc/voc07_trainval.txt')
-    parser.add_argument('--test-root',          type=str,       default='./datasets/voc/VOC2007/JPEGImages')
-    parser.add_argument('--test-label-file',    type=str,       default='./datasets/voc//voc07_test.txt')
+    parser.add_argument('--train-root',         type=str,       default='../datasets/voc/VOC2007/JPEGImages')
+    parser.add_argument('--train-label-file',   type=str,       default='../datasets/voc/voc07_trainval.txt')
+    parser.add_argument('--test-root',          type=str,       default='../datasets/voc/VOC2007/JPEGImages')
+    parser.add_argument('--test-label-file',    type=str,       default='../datasets/voc//voc07_test.txt')
     parser.add_argument('--n_classes',          type=int,       default=21)
     parser.add_argument('--mode',               type=str,       default='train',        help='train, test')
     parser.add_argument('--model',              type=str,       default='RetinaNet',    help='model')
-    parser.add_argument('--pretrained',         type=str,       default='./preTrainedModels/retina/retinanet_resnet50_voc.pth')
-    parser.add_argument('--checkpoint',         type=str,       default='./output/ckpt.pth')
+    parser.add_argument('--pretrained',         type=str,       default='../preTrainedModels/retina/retinanet_resnet50_voc.pth')
+    parser.add_argument('--checkpoint',         type=str,       default='../output/ckpt.pth')
 
 
     config = parser.parse_args()

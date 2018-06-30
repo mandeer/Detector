@@ -36,7 +36,7 @@ class FocalLoss(nn.Module):
         '''
         alpha = max(0.25, 1 - pow(10, self.iteration // 1000) / 10000)
         gamma = 2
-        if change_alpha & alpha > 0.25:
+        if change_alpha and alpha > 0.25:
             self.iteration += 1
             print('iteration: ', self.iteration, ' alpha: ', alpha)
 
@@ -61,7 +61,7 @@ class FocalLoss(nn.Module):
         alpha = max(0.25, 1 - pow(10, self.iteration // 1000) / 10000)
         beta = 1
         gamma = 2
-        if change_alpha & alpha > 0.25:
+        if change_alpha and alpha > 0.25:
             self.iteration += 1
             print('iteration: ', self.iteration, ' alpha: ', alpha)
 
